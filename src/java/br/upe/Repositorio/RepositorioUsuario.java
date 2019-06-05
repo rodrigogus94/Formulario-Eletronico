@@ -28,12 +28,12 @@ public class RepositorioUsuario implements Interface<Usuario, String>{
 
     @Override
     public void deletar(Usuario t) {
-       br.upe.DAO.DaoManagerHiber.delete(t);
+       DaoManagerHiber.delete(t);
    
 }
     @Override
     public List<Usuario> recuperarTodos() {
-        return br.upe.DAO.DaoManagerHiber.recover("from Usuario");
+        return DaoManagerHiber.recover("from Usuario");
     }
    
 }
