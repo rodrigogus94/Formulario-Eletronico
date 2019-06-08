@@ -23,40 +23,41 @@
                     <p:panelGrid columns="2" id="tabela">
 
                         <h:outputText value="Nome"/>
-                        <p:inputText id="nome" value="#{controladorUsuario.selectUsuario.nome}" required="true"
+                        <p:inputText id="nome" value="#{ControladorUsuario.selectUsuario.nome}" required="true"
                                      requiredMessage="O campo nome é obrigatório" label="nome"/>
 
-                       
+                        <h:outputText value="Login"/>
+                        <p:inputText id="login" value="#{ControladorUsuario.selectUsuario.login}" required="true"
+                                     requiredMessage="O campo login é obrigatório" label="login"/>
+                        
+                        <p:outputLabel value="Perfil" for="Perfil_Usuario"/>
+                        <p:selectOneMenu id="Perfil_Usuario" value="#{ControladorUsuario.selectUsuario.perfil}" effect="fold" editable="true" rendered="true" required="true"
+                                         requiredMessage="Faltou o Perfil!">
+                            <f:selectItem itemLabel="Administrador" itemValue="Administrado"/>
+                            <f:selectItem itemLabel="Lider de equipe" itemValue="Lider de equipe "/>
+                            <f:selectItem itemLabel="Estagiario" itemValue="Estagiario"/>
+                        </p:selectOneMenu>
+
+
 
                     </p:panelGrid>
 
-                    <p:commandButton value="Alterar" oncomplete="painel1.show()" update="dialogo1"/>
-                    <p:commandButton value="Cancelar" oncomplete="location.href='ApresentaUsuario.xhtml'"/>
+                    <p:commandButton type="submit" value="Alterar" icon="ui-icon-disk" action="#{ControladorUsuario.alterarUsuario(ControladorUsuario.selectUsuario)}">
+                        <p:confirm header="Confirme" message="Confirmar" icon="ui-icon-alert" />
+                    </p:commandButton>
 
+                    <p:commandButton value="Cancelar" icon="ui-icon-close" oncomplete="location.href='ApresentaUsuario.xhtml'" >
+                        <p:confirm header="Confirme" message="Deseja Mesmo Cancelar o Cadastro" icon="ui-icon-alert" />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
+                        <div style="text-align: center; width: 100%;">
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form_Cada"/>
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </div>
+                    </p:confirmDialog>
 
                 </p:panel>
-                <p:confirmDialog id="dialogo1" closable="false"  
-                                 visible="false" widgetVar="painel1" message="Deseja realmente alterar #{usuario.nome}">
-
-                    <f:facet name="header">
-                        Atenção
-                    </f:facet>
-
-                    <p:commandButton value="Sim" action="#{controladorUsuario.alterarUsuario((controladorUsuario.selectUsuario))}" 
-                                     oncomplete="painel1.hide(); painel2.show()" update="dialogo2"/>
-                    <p:commandButton value="Não" oncomplete="painel1.hide()"/>
-
-                </p:confirmDialog>
-
-                <p:confirmDialog id="dialogo2" closable="false"  visible="false"
-                                 widgetVar="painel2" message="O Usuario #{usuario.nome} foi alterado com sucesso" >
-
-                    <f:facet name="header">
-                        Obrigado!
-                    </f:facet>
-                    <p:commandButton value="OK" oncomplete="location.href='ApresentaUsuario.xhtml'"/>
-
-                </p:confirmDialog>
 
             </h:form>
         </div>

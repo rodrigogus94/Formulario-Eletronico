@@ -1,9 +1,12 @@
 package br.upe.Repositorio;
 
 
+
+
+
+import br.upe.DAO.DaoManagerHiber;
 import br.upe.Interface.Interface;
 import br.upe.Negocio.Usuario;
-import br.upe.DAO.DaoManagerHiber;
 import java.util.List;
 
 public class RepositorioUsuario implements Interface<Usuario, String>{
@@ -11,13 +14,13 @@ public class RepositorioUsuario implements Interface<Usuario, String>{
     
 
     @Override
-    public void inserir(Usuario t) {
-        DaoManagerHiber.persist(t);
+    public void inserir(Usuario u) {
+        DaoManagerHiber.persist(u);
     }
 
     @Override
-    public void alterar(Usuario t) {
-        DaoManagerHiber.update(t);
+    public void alterar(Usuario u) {
+        DaoManagerHiber.update(u);
     }
     
 
@@ -27,13 +30,13 @@ public class RepositorioUsuario implements Interface<Usuario, String>{
     }
 
     @Override
-    public void deletar(Usuario t) {
-       DaoManagerHiber.delete(t);
+    public void deletar(Usuario u) {
+       DaoManagerHiber.delete(u);
    
 }
+
     @Override
     public List<Usuario> recuperarTodos() {
         return DaoManagerHiber.recover("from Usuario");
     }
-   
 }

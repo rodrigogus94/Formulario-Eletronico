@@ -1,4 +1,4 @@
-/*RedHunter
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -19,13 +19,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
-@ManagedBean
+@ManagedBean(name = "Usuario")
 @RequestScoped
 @Entity
 @Table(name = "Usuario")
 public class Usuario implements Serializable {
 
-    @Id
+   @Id
     @GeneratedValue
     private int id;
 
@@ -41,7 +41,10 @@ public class Usuario implements Serializable {
     @Column(name = "perfil", length = 100)
     private String perfil;
 
-   
+
+  public Usuario(){
+      
+  }
 
     public int getId() {
         return id;
@@ -82,7 +85,6 @@ public class Usuario implements Serializable {
     public void setPerfil(String perfil) {
         this.perfil = perfil;
     }
-
   
 
     @Override

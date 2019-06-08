@@ -23,23 +23,23 @@
                     <p:panelGrid columns="2" id="tabela">
 
                         <h:outputText value="Nome"/>
-                        <p:inputText id="nome" value="#{usuario.nome}" required="true"
+                        <p:inputText id="nome" value="#{Usuario.nome}" required="true"
                                      requiredMessage="O campo nome é obrigatório" label="nome"/>
 
                         <h:outputText value="Login"/>
-                        <p:inputText id="login" value="#{usuario.login}" required="true"
+                        <p:inputText id="login" value="#{Usuario.login}" required="true"
                                      requiredMessage="O campo login é obrigatório" label="login"/>
 
 
                         <p:outputLabel for="Senha_Usuario" value="Senha"/>
-                        <p:password id="Senha_Usuario" value="#{usuario.senha}" required="true" requiredMessage="Faltou a senha do usuário"
+                        <p:password id="Senha_Usuario" value="#{Usuario.senha}" required="true" requiredMessage="Faltou a senha do usuário"
                                     placeholder="Digite a senha de acesso as sistema" size="30" strongLabel="Ótimo"
                                     feedback="true" inline="true" goodLabel="Bom" promptLabel="Força da Senha" weakLabel="Fraco">
                             <f:validateLength minimum="5" maximum="50"/>
                         </p:password>
 
                         <p:outputLabel value="Perfil" for="Perfil_Usuario"/>
-                        <p:selectOneMenu id="Perfil_Usuario" value="#{usuario.perfil}" effect="fold" editable="true" rendered="true" required="true"
+                        <p:selectOneMenu id="Perfil_Usuario" value="#{Usuario.perfil}" effect="fold" editable="true" rendered="true" required="true"
                                          requiredMessage="Faltou o Perfil!">
                             <f:selectItem itemLabel="Administrador" itemValue="Administrado"/>
                             <f:selectItem itemLabel="Lider de equipe" itemValue="Lider de equipe "/>
@@ -49,7 +49,7 @@
 
                     </p:panelGrid>
 
-                    <p:commandButton type="submit" value="Cadastrar" icon="ui-icon-disk" action="#{controladorUsuario.inserirUsuario(usuario)}">
+                    <p:commandButton type="submit" value="Cadastrar" icon="ui-icon-disk" action="#{ControladorUsuario.inserirUsuario(Usuario)}">
                         <p:confirm header="Confirme" message="Confirmar" icon="ui-icon-alert" />
                     </p:commandButton>
 
