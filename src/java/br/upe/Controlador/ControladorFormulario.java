@@ -32,7 +32,7 @@ public class ControladorFormulario {
         
         this.rf.inserir(f);
          
-         return "ApresentaFormulario.xhtml";
+         return "index.xhtml";//trocar
     }
     
     public String alterarFormulario(Formulario f){
