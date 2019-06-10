@@ -23,10 +23,10 @@ public class Formulario implements Serializable {
     @Column(name = "titulo", length = 100)
     private String titulo;
 
-    @Column(name = "Nome dos Autores", length = 100)
+    @Column(name = "nomedosAutores", length = 100)
     private String nomeautores;
             
-    @Column(name = "Jornal ou Evento", length = 100)
+    @Column(name = "jornalouEvento", length = 100)
     private String jornalouevento;
 
     @Column(name = "ano", length = 100)

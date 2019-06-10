@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <h:body>
+       <h:form>
+
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="center" size="0">
+                    <div align="center">
+                        <p:panel header="Login e Senha para Acesso ao Sistema" closable="false" style="size: 750px;">
+
+                            <h:panelGrid columns="3">
+
+                                <f:facet name="header">
+                                    <p:messages showDetail="true" id="messages" autoUpdate="true" closable="true"/>
+                                    <p:growl sticky="6000" showDetail="true" />
+                                </f:facet>
+                                
+                                <p:outputLabel value="Login" for="login"/>
+                                <p:inputText required="true" value="#{Usuario.login}" requiredMessage="campo Login obrigatório"
+                                             placeholder="digite o Login" id="login" size="30" />
+                                <p:message for="login" showDetail="true" />
+
+                                <p:outputLabel value="Senha" for="senha"/>
+                                <p:password required="true" value="#{Usuario.senha}" requiredMessage="campo Senha obrigatório"
+                                            placeholder="digite a Senha" id="senha" size="30"/>
+                                <p:message for="senha" showDetail="true" />                                
+                            </h:panelGrid>
+
+                            <div style="width: 100%;  text-align: center; margin-top:20px;">
+                                <p:commandButton value="Entrar" icon="ui-icon-check" title="Entrar" 
+                                                 action="#{ControladorUsuario.validarLogin(Usuario.login, Usuario.senha)}"/> 
+                            </div>
+                        </p:panel>  
+                    </div>
+                   
+                </p:layoutUnit>
+               
+            </p:layout>
+        </h:form>
+    </h:body>
+</html>
+
