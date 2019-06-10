@@ -10,7 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@ManagedBean
+@ManagedBean(name = "Formulario")
 @RequestScoped
 @Entity
 @Table(name = "Formulario")

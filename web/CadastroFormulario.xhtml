@@ -23,39 +23,39 @@
                     <p:panelGrid columns="2" id="tabela">
 
                         <h:outputText value="Titulo"/>
-                        <p:inputText id="titulo" value="#{formulario.titulo}" required="true"
+                        <p:inputText id="titulo" value="#{Formulario.titulo}" required="true"
                                      requiredMessage="O campo Titulo é obrigatório" label="titulo"/>
                         
                         <h:outputText value="Nome dos Autores"/>
-                        <p:inputText id="nomeautores" value="#{formulario.nomeautores}" required="true"
+                        <p:inputText id="nomeautores" value="#{Formulario.nomeautores}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="nomeautores"/>
 
                         <p:outputLabel value="Jornal ou Evento" for="Jornal_Evento"/>
-                        <p:selectOneMenu id="Jornal_Evento" value="#{formulario.jornalouevento}" effect="fold" editable="true" rendered="true" required="true"
+                        <p:selectOneMenu id="Jornal_Evento" value="#{Formulario.jornalouevento}" effect="fold" editable="true" rendered="true" required="true"
                                          requiredMessage="Faltou selecionar!">
                             <f:selectItem itemLabel="Jornal" itemValue="Jornal"/>
                             <f:selectItem itemLabel="Evento" itemValue="Evento"/>
                         </p:selectOneMenu>
 
                         <h:outputText value="Ano"/>
-                        <p:inputText id="ano" value="#{formulario.ano}" required="true"
+                        <p:inputText id="ano" value="#{Formulario.ano}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="ano"/>
                         
                         <h:outputText value="Paginas"/>
-                        <p:inputText id="paginas" value="#{formulario.paginas}" required="true"
+                        <p:inputText id="paginas" value="#{Formulario.paginas}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="paginas"/>
                         
                         <h:outputText value="DOI"/>
-                        <p:inputText id="doi" value="#{formulario.doi}" required="true"
+                        <p:inputText id="doi" value="#{Formulario.doi}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="doi"/>
                         
                         <h:outputText value="ISBN"/>
-                        <p:inputText id="isbn" value="#{formulario.isbn}" required="true"
+                        <p:inputText id="isbn" value="#{Formulario.isbn}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="isbn"/>
                         
                     </p:panelGrid>
 
-                    <p:commandButton type="submit" value="Cadastrar" icon="ui-icon-disk" action="#{ControladorFormulario.inserirFormulario(formulario)}">
+                    <p:commandButton type="submit" value="Cadastrar" icon="ui-icon-disk" action="#{controladorFormulario.inserirFormulario(Formulario)}">
                         <p:confirm header="Confirme" message="Confirmar" icon="ui-icon-alert" />
                     </p:commandButton>
 

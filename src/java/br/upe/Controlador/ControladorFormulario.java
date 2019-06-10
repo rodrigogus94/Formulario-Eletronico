@@ -10,51 +10,49 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 
 public class ControladorFormulario {
-    
-    private RepositorioFormulario rf= null;
+
+    private RepositorioFormulario rf = null;
     private Formulario SelectFormulario = null;
-   
-    
-    public Formulario getSelectFormulario(){
+
+    public Formulario getSelectFormulario() {
         return SelectFormulario;
     }
-    
+
     public void setSelectFormulario(Formulario SelectForulario) {
         this.SelectFormulario = SelectFormulario;
     }
-    
-    public ControladorFormulario(){
+
+    public ControladorFormulario() {
         this.rf = new RepositorioFormulario();
-        
+
     }
-    
-    public String inserirFormulario(Formulario f){
-        
+
+    public String inserirFormulario(Formulario f) {
+
         this.rf.inserir(f);
-         
-         return "index.xhtml";//trocar
+
+        return "index.xhtml";//trocar
     }
-    
-    public String alterarFormulario(Formulario f){
-         
-         this.rf.alterar(f);
-         System.out.println("To antes do retrun");
+
+    public String alterarFormulario(Formulario f) {
+
+        this.rf.alterar(f);
+        System.out.println("To antes do retrun");
         return "ApresentaFormulario.xhtml";
-        
+
     }
-    public Formulario recuperarFormulario(int id){
+
+    public Formulario recuperarFormulario(int id) {
         return this.rf.recuperar(id);
     }
-    
-    public void deletarFormulario(Formulario f){
+
+    public void deletarFormulario(Formulario f) {
         this.rf.deletar(f);
-        
+
     }
-    
-    public List<Formulario> recuperarTodosFormularios(){
+
+    public List<Formulario> recuperarTodosFormularios() {
         return this.rf.recuperarTodos();
     }
-    
+
 }
-
-

@@ -20,7 +20,7 @@
 
                 <p:growl id="gro" showSummary="true" showDetail="true" life="3000" sticky="false"/>
 
-                <p:dataTable id="Tabela" value="#{ControladorFormulario.recuperarTodosFormularios()}" var="item"
+                <p:dataTable id="Tabela" value="#{controladorFormulario.recuperarTodosFormularios()}" var="item"
                              paginator="true" rows="10" rowKey="#{item.titulo}" 
                              emptyMessage="Não ha registros.">
 
@@ -32,8 +32,8 @@
                         <h:outputText value="#{item.titulo}" />
                     </p:column> 
                     
-                    <p:column headerText="Nome do Autor" filterBy="#{item.nomeAutores}">
-                        <h:outputText value="#{item.nomeAutores}" />
+                    <p:column headerText="Nome do Autor" filterBy="#{item.nomeautores}">
+                        <h:outputText value="#{item.nomeautores}" />
                     </p:column> 
 
 
@@ -50,7 +50,7 @@
                             <p:confirm header="Confimation" message="Deseja realmente atualizar?" icon="ui-icon-alert"/>
                         </p:commandButton>
 
-                        <p:commandButton oncomplete="location.href='ApresentaUsuario.xhtml'" icon="ui-icon-trash" update="tdl_usuario" title="Deletar" style="font-size: small"
+                        <p:commandButton oncomplete="location.href='ApresentaFormulario.xhtml'" icon="ui-icon-trash" update="tdl_formulario" title="Deletar" style="font-size: small"
                                          action="#{ControladorFormulario.deletarFormulario(ControladorFormulario.selectFormulario)}">
                             <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}"/>
                             <p:confirm header="Confirmation" message="Deseja relamente deletar?" icon="ui-icon-alert"/>
