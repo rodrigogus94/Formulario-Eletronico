@@ -25,15 +25,14 @@
                         <h:outputText value="Nome"/>
                         <p:inputText id="nome" value="#{Usuario.nome}" required="true"
                                      requiredMessage="O campo nome é obrigatório" label="nome"/>
-
+                        
                         <h:outputText value="Login"/>
                         <p:inputText id="login" value="#{Usuario.login}" required="true"
                                      requiredMessage="O campo login é obrigatório" label="login"/>
 
-
                         <p:outputLabel for="Senha_Usuario" value="Senha"/>
                         <p:password id="Senha_Usuario" value="#{Usuario.senha}" required="true" requiredMessage="Faltou a senha do usuário"
-                                    placeholder="Digite a senha de acesso as sistema" size="30" strongLabel="Ótimo"
+                                    placeholder="Digite a senha de acesso as sistema" strongLabel="Ótimo"
                                     feedback="true" inline="true" goodLabel="Bom" promptLabel="Força da Senha" weakLabel="Fraco">
                             <f:validateLength minimum="5" maximum="50"/>
                         </p:password>
