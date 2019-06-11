@@ -1,21 +1,28 @@
-
+/*RedHunter
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.upe.Negocio;
 
 import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
 import javax.persistence.Table;
+
 
 @ManagedBean(name = "Formulario")
 @RequestScoped
 @Entity
 @Table(name = "Formulario")
-
 public class Formulario implements Serializable {
+
     @Id
     @GeneratedValue
     private int id;
@@ -41,12 +48,13 @@ public class Formulario implements Serializable {
     @Column(name = "isbn", length = 100)
     private String isbn;
 
+
+  public Formulario(){
+      
+  }
+
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitulo() {
@@ -104,7 +112,10 @@ public class Formulario implements Serializable {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-    
+
+   
+  
+
     @Override
     public int hashCode() {
         int hash = 7;
@@ -126,5 +137,7 @@ public class Formulario implements Serializable {
         }
         return true;
     }
-    
+
+
+
 }

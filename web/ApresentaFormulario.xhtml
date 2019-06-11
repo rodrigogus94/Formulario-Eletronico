@@ -20,7 +20,7 @@
 
                 <p:growl id="gro" showSummary="true" showDetail="true" life="3000" sticky="false"/>
 
-                <p:dataTable id="Tabela" value="#{controladorFormulario.recuperarTodosFormularios()}" var="item"
+                <p:dataTable id="tabelaFormulario" value="#{ControladorFormulario.recuperarTodosFormularios()}" var="item"
                              paginator="true" rows="10" rowKey="#{item.titulo}" 
                              emptyMessage="Não ha registros.">
 
@@ -28,10 +28,14 @@
                         Tabela de Artigos
                     </f:facet>
 
+                    <p:column headerText="Código" filterBy="#{item.id}">
+                        <h:outputText value="#{item.id}" />
+                    </p:column> 
+
                     <p:column headerText="Titulo" filterBy="#{item.titulo}">
                         <h:outputText value="#{item.titulo}" />
                     </p:column> 
-                    
+
                     <p:column headerText="Nome do Autor" filterBy="#{item.nomeautores}">
                         <h:outputText value="#{item.nomeautores}" />
                     </p:column> 
@@ -50,7 +54,7 @@
                             <p:confirm header="Confimation" message="Deseja realmente atualizar?" icon="ui-icon-alert"/>
                         </p:commandButton>
 
-                        <p:commandButton oncomplete="location.href='ApresentaFormulario.xhtml'" icon="ui-icon-trash" update="tdl_formulario" title="Deletar" style="font-size: small"
+                        <p:commandButton oncomplete="location.href='ApresentaFormulario.xhtml'" icon="ui-icon-trash" update="tabelaFormulario" title="Deletar" style="font-size: small"
                                          action="#{ControladorFormulario.deletarFormulario(ControladorFormulario.selectFormulario)}">
                             <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}"/>
                             <p:confirm header="Confirmation" message="Deseja relamente deletar?" icon="ui-icon-alert"/>
@@ -60,19 +64,33 @@
                                   header="Detalhes do Usuario: #{ControladorFormulario.selectFormulario.titulo}" draggable="false"
                                   resizable="false" widgetVar="dialDeletar_C" modal="true" appendTo="@(body)">
 
-                            <p:outputPanel id="tdl_formulario" style="text-align: center;">
+                            <p:outputPanel id="tabelaFormulario" style="text-align: center;">
                                 <p:panelGrid columns="2" rendered="#{not empty ControladorFormulario.selectFormulario}">
                                     <f:facet name="header">
                                         Detalhes do Artigo: #{ControladorFormulario.selectFormulario.titulo}
                                     </f:facet>
 
 
-                                    <h:outputText value="Nome" style="font-weight: bold;"/>
-                                    <h:outputText value="#{ControladorUsuario.selectUsuario.nome}"/>
+                                    <h:outputText value="Titulo" style="font-weight: bold;"/>
+                                    <h:outputText value="#{ControladorFormulario.selectFormulario.titulo}"/>
 
-                                    <h:outputText value="Login" style="font-weight: bold;"/>
-                                    <h:outputText value="#{ControladorUsuario.selectUsuario.login}"/>
+                                    <h:outputText value="Nome do autores" style="font-weight: bold;"/>
+                                    <h:outputText value="#{ControladorFormulario.selectFormulario.nomeautores}"/>
 
+                                    <h:outputText value="Journal ou Evento" style="font-weight: bold;"/>
+                                    <h:outputText value="#{ControladorFormulario.selectFormulario.jornalouevento}"/>
+
+                                    <h:outputText value="Ano" style="font-weight: bold;"/>
+                                    <h:outputText value="#{ControladorFormulario.selectFormulario.ano}"/>
+
+                                    <h:outputText value="Páginas" style="font-weight: bold;"/>
+                                    <h:outputText value="#{ControladorFormulario.selectFormulario.paginas}"/>
+
+                                    <h:outputText value="DOI" style="font-weight: bold;"/>
+                                    <h:outputText value="#{ControladorFormulario.selectFormulario.doi}"/>
+
+                                    <h:outputText value="ISBN" style="font-weight: bold;"/>
+                                    <h:outputText value="#{ControladorFormulario.selectFormulario.isbn}"/>
 
                                 </p:panelGrid>
                             </p:outputPanel>

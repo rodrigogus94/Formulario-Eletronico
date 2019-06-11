@@ -1,3 +1,4 @@
+//RedHunter
 package br.upe.Repositorio;
 
 import br.upe.DAO.DaoManagerHiber;
@@ -8,13 +9,13 @@ import java.util.List;
 public class RepositorioFormulario implements Interface <Formulario, String>{
 
     @Override
-    public void inserir(Formulario t) {
-       DaoManagerHiber.persist(t);
+    public void inserir(Formulario f) {
+       DaoManagerHiber.persist(f);
     }
 
     @Override
-    public void alterar(Formulario t) {
-        DaoManagerHiber.update(t);
+    public void alterar(Formulario f) {
+        DaoManagerHiber.update(f);
     }
 
     @Override
@@ -23,8 +24,8 @@ public class RepositorioFormulario implements Interface <Formulario, String>{
     }
 
     @Override
-    public void deletar(Formulario t) {
-        DaoManagerHiber.delete(t);
+    public void deletar(Formulario f) {
+        DaoManagerHiber.delete(f);
     }
 
     @Override

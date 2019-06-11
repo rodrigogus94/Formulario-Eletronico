@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Alterar Formulario</title>
+        <style>
+            @import "css/estiloGeral.css";
+        </style>
+    </h:head>
+    <h:body>
+        <div class="box_body">
+            <ui:include src="Menu.xhtml" />
+
+            <h:form>
+                <p:panel header="Alterar Artigo" >
+                    <p:growl autoUpdate="true"/>
+
+                    <p:growl autoUpdate="true" rendered="true" id="gro" life="4000" showSummary="true" showDetail="true"/>            
+                    <p:panelGrid columns="2" id="tabela">
+
+                        <h:outputText value="Titulo"/>
+                        <p:inputText id="titulo" value="#{ControladorFormulario.selectFormulario.titulo}" required="true"
+                                     requiredMessage="O campo Titulo é obrigatório" label="titulo"/>
+
+                        <h:outputText value="Nome dos Autores"/>
+                        <p:inputText id="nomeautores" value="#{ControladorFormulario.selectFormulario.nomeautores}" required="true"
+                                     requiredMessage="Este campo é obrigatório" label="nomeautores"/>
+
+                        <p:outputLabel value="Jornal ou Evento" for="Jornal_Evento"/>
+                        <p:selectOneMenu id="Jornal_Evento" value="#{ControladorFormulario.selectFormulario.jornalouevento}" effect="fold" editable="true" rendered="true" required="true"
+                                         requiredMessage="Faltou selecionar!">
+                            <f:selectItem itemLabel="Jornal" itemValue="Jornal"/>
+                            <f:selectItem itemLabel="Evento" itemValue="Evento"/>
+                        </p:selectOneMenu>
+
+                        <h:outputText value="Ano"/>
+                        <p:inputText id="ano" value="#{ControladorFormulario.selectFormulario.ano}" required="true"
+                                     requiredMessage="Este campo é obrigatório" label="ano"/>
+
+                        <h:outputText value="Paginas"/>
+                        <p:inputText id="paginas" value="#{ControladorFormulario.selectFormulario.paginas}" required="true"
+                                     requiredMessage="Este campo é obrigatório" label="paginas"/>
+
+                        <h:outputText value="DOI"/>
+                        <p:inputText id="doi" value="#{ControladorFormulario.selectFormulario.doi}" required="true"
+                                     requiredMessage="Este campo é obrigatório" label="doi"/>
+
+                        <h:outputText value="ISBN"/>
+                        <p:inputText id="isbn" value="#{ControladorFormulario.selectFormulario.isbn}" required="true"
+                                     requiredMessage="Este campo é obrigatório" label="isbn"/>
+
+                    </p:panelGrid>
+
+
+                    <p:commandButton type="submit" value="Alterar" icon="ui-icon-disk" action="#{ControladorFormulario.alterarFormulario(ControladorFormulario.selectFormulario)}">
+                        <p:confirm header="Confirme" message="Confirmar" icon="ui-icon-alert" />
+                    </p:commandButton>
+
+                    <p:commandButton value="Cancelar" icon="ui-icon-close" oncomplete="location.href='ApresentaFormulario.xhtml'" >
+                        <p:confirm header="Confirme" message="Deseja Mesmo Cancelar o Cadastro" icon="ui-icon-alert" />
+                    </p:commandButton>
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
+                        <div style="text-align: center; width: 100%;">
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form_Cada"/>
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </div>
+                    </p:confirmDialog>
+
+                </p:panel>
+
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

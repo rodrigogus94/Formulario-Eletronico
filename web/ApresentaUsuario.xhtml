@@ -20,7 +20,7 @@
 
                 <p:growl id="gro" showSummary="true" showDetail="true" life="3000" sticky="false"/>
 
-                <p:dataTable id="Tabela" value="#{ControladorUsuario.recuperarTodosUsuarios()}" var="item"
+                <p:dataTable id="tabelaUsuario" value="#{ControladorUsuario.recuperarTodosUsuarios()}" var="item"
                              paginator="true" rows="10" rowKey="#{item.nome}" 
                              emptyMessage="Não ha registros.">
 
@@ -31,7 +31,7 @@
                     <p:column headerText="Nome" filterBy="#{item.nome}">
                         <h:outputText value="#{item.nome}" />
                     </p:column> 
-                    
+
                     <p:column headerText="Perfil" filterBy="#{item.perfil}">
                         <h:outputText value="#{item.perfil}" />
                     </p:column> 
@@ -50,7 +50,7 @@
                             <p:confirm header="Confimation" message="Deseja realmente atualizar?" icon="ui-icon-alert"/>
                         </p:commandButton>
 
-                        <p:commandButton oncomplete="location.href='ApresentaUsuario.xhtml'" icon="ui-icon-trash" update="tdl_usuario" title="Deletar" style="font-size: small"
+                        <p:commandButton oncomplete="location.href='ApresentaUsuario.xhtml'" icon="ui-icon-trash" update="tabelaUsuario" title="Deletar" style="font-size: small"
                                          action="#{ControladorUsuario.deletarUsuario(ControladorUsuario.selectUsuario)}">
                             <f:setPropertyActionListener value="#{item}" target="#{ControladorUsuario.selectUsuario}"/>
                             <p:confirm header="Confirmation" message="Deseja relamente deletar?" icon="ui-icon-alert"/>
@@ -60,7 +60,7 @@
                                   header="Detalhes do Usuario: #{ControladorUsuario.selectUsuario.nome}" draggable="false"
                                   resizable="false" widgetVar="dialDeletar_C" modal="true" appendTo="@(body)">
 
-                            <p:outputPanel id="tdl_usuario" style="text-align: center;">
+                            <p:outputPanel id="tabelaUsuario" style="text-align: center;">
                                 <p:panelGrid columns="2" rendered="#{not empty ControladorUsuario.selectUsuario}">
                                     <f:facet name="header">
                                         Detalhes do Usuario: #{ControladorUsuario.selectUsuario.nome}
@@ -72,6 +72,9 @@
 
                                     <h:outputText value="Login" style="font-weight: bold;"/>
                                     <h:outputText value="#{ControladorUsuario.selectUsuario.login}"/>
+
+                                    <h:outputText value="Perfil" style="font-weight: bold;"/>
+                                    <h:outputText value="#{ControladorUsuario.selectUsuario.perfil}"/>
 
 
                                 </p:panelGrid>
