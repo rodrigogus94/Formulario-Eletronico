@@ -14,14 +14,11 @@
 
                 <p:layoutUnit position="center" size="0">
                     <div align="center">
+                        <p:growl id="growl" showDetail="true" sticky="true"/>
                         <p:panel header="Login e Senha para Acesso ao Sistema" closable="false" style="size: 750px;">
 
-                            <h:panelGrid columns="3">
-
-                                <f:facet name="header">
-                                    <p:messages showDetail="true" id="messages" autoUpdate="true" closable="true"/>
-                                    <p:growl sticky="6000" showDetail="true" />
-                                </f:facet>
+                            <h:panelGrid columns="3" id="grid">
+                                
                                 
                                 <p:outputLabel value="Login" for="login"/>
                                 <p:inputText required="true" value="#{Usuario.login}" requiredMessage="campo Login obrigatório"
@@ -36,7 +33,7 @@
 
                             <div style="width: 100%;  text-align: center; margin-top:20px;">
                                 <p:commandButton value="Entrar" icon="ui-icon-check" title="Entrar" 
-                                                 action="#{ControladorUsuario.validarLogin(Usuario.login, Usuario.senha)}"/> 
+                                                 action="#{ControladorUsuario.validarLogin(Usuario.login, Usuario.senha)}" update="growl" /> 
                             </div>
                         </p:panel>  
                     </div>

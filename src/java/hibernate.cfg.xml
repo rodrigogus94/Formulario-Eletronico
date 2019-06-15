@@ -10,5 +10,6 @@
     <property name="hibernate.show_sql">true</property>
     <mapping class="br.upe.Negocio.Usuario"/>
     <mapping class="br.upe.Negocio.Formulario"/>
+    <mapping class="br.upe.Negocio.Equipe"/>
   </session-factory>
 </hibernate-configuration>

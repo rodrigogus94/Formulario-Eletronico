@@ -22,7 +22,7 @@
 
                 <p:dataTable id="tabelaFormulario" value="#{ControladorFormulario.recuperarTodosFormularios()}" var="item"
                              paginator="true" rows="10" rowKey="#{item.titulo}" 
-                             emptyMessage="Não ha registros.">
+                             emptyMessage="Não ha registros." >
 
                     <f:facet name="header">
                         Tabela de Artigos
@@ -44,7 +44,7 @@
                     <p:column style="width: 100px;" headerText="Ações" exportable="false" >
 
                         <p:commandButton  oncomplete="PF('dialDeletar_C').show()" icon="ui-icon-search"
-                                          title="Detalhes" style="font-size: small;" >
+                                          title="Detalhes" style="font-size: small;" update="tabelaFormulario" >
                             <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}"/>             
                         </p:commandButton>
 
@@ -64,7 +64,7 @@
                                   header="Detalhes do Usuario: #{ControladorFormulario.selectFormulario.titulo}" draggable="false"
                                   resizable="false" widgetVar="dialDeletar_C" modal="true" appendTo="@(body)">
 
-                            <p:outputPanel id="tabelaFormulario" style="text-align: center;">
+                            <p:outputPanel id="tabelaFormulario" style="text-align: center;" autoUpdate="true">
                                 <p:panelGrid columns="2" rendered="#{not empty ControladorFormulario.selectFormulario}">
                                     <f:facet name="header">
                                         Detalhes do Artigo: #{ControladorFormulario.selectFormulario.titulo}

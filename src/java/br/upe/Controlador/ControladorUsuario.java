@@ -3,30 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package br.upe.Controlador;
-
-
-
 
 import br.upe.Negocio.Usuario;
 import br.upe.Repositorio.RepositorioUsuario;
-import java.io.IOException;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.swing.JOptionPane;
-import org.primefaces.context.RequestContext;
+import org.apache.commons.codec.digest.DigestUtils;
 
 
 @ManagedBean(name = "ControladorUsuario")
 @SessionScoped
 public class ControladorUsuario {
-    
-    private RepositorioUsuario ru= null;
+
+    private RepositorioUsuario ru = null;
     private Usuario SelectUsuario = null;
+    private Usuario login;
+    private Usuario senha;
+
+    public ControladorUsuario() {
+        this.ru = new RepositorioUsuario();
+
+    }
 
     public Usuario getSelectUsuario() {
         return SelectUsuario;
@@ -35,58 +36,64 @@ public class ControladorUsuario {
     public void setSelectUsuario(Usuario SelectUsuario) {
         this.SelectUsuario = SelectUsuario;
     }
-    
-    public ControladorUsuario(){
-        this.ru = new RepositorioUsuario();
-        
+
+    public Usuario getLogin() {
+        return login;
     }
 
-    public String inserirUsuario(Usuario u){
+    public void setLogin(Usuario login) {
+        this.login = login;
+    }
+
+    public Usuario getSenha() {
+        return senha;
+    }
+
+    public void setSenha(Usuario senha) {
+        this.senha = senha;
+    }
+    
+    
+    
+    public String inserirUsuario(Usuario u) {
         
+        u.setSenha(DigestUtils.md5Hex(DigestUtils.md2Hex(u.getSenha())));
         this.ru.inserir(u);
-         
-         return "ApresentaUsuario.xhtml";
-    }
-     public String alterarUsuario(Usuario u){
-         
-         this.ru.alterar(u);
-         System.out.println("To antes do retrun");
         return "ApresentaUsuario.xhtml";
-        
     }
-   
-    public Usuario recuperarUsuario(int id){
+
+    public String alterarUsuario(Usuario u) {
+
+        this.ru.alterar(u);
+        System.out.println("To antes do retrun");
+        return "ApresentaUsuario.xhtml";
+
+    }
+
+    public Usuario recuperarUsuario(int id) {
         return this.ru.recuperar(id);
     }
-    
-    public void deletarUsuario(Usuario u){
+
+    public void deletarUsuario(Usuario u) {
         this.ru.deletar(u);
-        
+
     }
-    
-    public List<Usuario> recuperarTodosUsuarios(){
+
+    public List<Usuario> recuperarTodosUsuarios() {
         return this.ru.recuperarTodos();
     }
-   
-       
 
     public String validarLogin(String login, String senha) {
-        
-        if (this.SelectUsuario.getLogin() != null) {
+        String senhaCriptografada = DigestUtils.md5Hex(DigestUtils.md2Hex(senha));
+        this.login = this.ru.recuperarPorLogin(login, senhaCriptografada);
 
+        if(this.login != null){
+            this.SelectUsuario = this.login;
             return "index.xhtml";
         }
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro", "Login ou senha invalida"));
         return null;
     }
 
-  /*  public void logoff(){
-        this.logoff = null;
-        try{
-            FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/login.xhtml");
-        }catch (IOException ex){
-            RequestContext.getCurrentInstance().showMessageInDialog
-        (new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario", ex.getMessage()));
-        }
-    }*/
-  
+   
 }

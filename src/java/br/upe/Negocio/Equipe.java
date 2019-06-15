@@ -18,44 +18,31 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-@ManagedBean(name = "Usuario")
+@ManagedBean(name = "Equipe")
 @RequestScoped
 @Entity
-@Table(name = "Usuario")
-public class Usuario implements Serializable {
+@Table(name = "Equipe")
+public class Equipe implements Serializable {
 
-   @Id
+    @Id
     @GeneratedValue
     private int id;
 
     @Column(name = "nome", length = 100)
     private String nome;
-
-    @Column(name = "login", length = 100)
-    private String login;
-            
-    @Column(name = "senha", length = 100)
-    private String senha;
-
-    @Column(name = "perfil", length = 100)
-    private String perfil;
     
-    @OneToMany
-    private List<Equipe> equipes;
+   
 
-    public Usuario(int id, String nome, String login, String senha, String perfil) {
+    public Equipe(int id, String nome) {
         this.id = id;
         this.nome = nome;
-        this.login = login;
-        this.senha = senha;
-        this.perfil = perfil;
     }
+    
+    public Equipe() {
+       
+    }
+       
 
-
-  public Usuario(){
-      this.equipes = new ArrayList<>();
-  }
 
     public int getId() {
         return id;
@@ -73,39 +60,7 @@ public class Usuario implements Serializable {
         this.nome = nome;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public String getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(String perfil) {
-        this.perfil = perfil;
-    }
-
-    public List<Equipe> getEquipes() {
-        return equipes;
-    }
-
-    public void setEquipes(List<Equipe> equipes) {
-        this.equipes = equipes;
-    }
-  
-    
+   
 
     @Override
     public int hashCode() {
@@ -122,13 +77,11 @@ public class Usuario implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Usuario other = (Usuario) obj;
+        final Equipe other = (Equipe) obj;
         if (this.id != other.id) {
             return false;
         }
         return true;
     }
-
-
 
 }

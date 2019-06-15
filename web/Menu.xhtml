@@ -16,31 +16,43 @@
     </h:head>
 
     <h:body>
-            
-            
-        <h:form id="form_menu">
 
-         
-            <p:menubar style="color: black">
+
+
+
+        <script>
+            if (#{ControladorUsuario.login.perfil == "Administrado"}) {
+                    location.href = "#{request.contextPath}#{request.servletPath}/from_menu";
+        </script>
+        <h:form id="form_menu"  >
+            <p:menubar style="color: black" id="menuAdmin">
 
                 <p:menuitem value="Home" outcome="index"  icon="ui-icon-home"/>
 
-
                 <p:submenu label="Usuario" style="color: black" icon="ui-icon-person">
                     <p:menuitem value="Cadastrar" outcome="CadastrarUsuario" icon="ui-icon-person"/>
-                    <p:menuitem  value="Lista" outcome="ApresentaUsuario" icon="ui-icon-document"/>
+                    <p:menuitem  value="Lista" outcome="ApresentaUsuario" icon="ui-icon-document" />
                 </p:submenu>
-                
+
                 <p:submenu label="Artigo" style="color: black" icon="ui-icon-person">
                     <p:menuitem value="Cadastrar" outcome="CadastrarFormulario" icon="ui-icon-person"/>
                     <p:menuitem  value="Lista" outcome="ApresentaFormulario" icon="ui-icon-document"/>
                 </p:submenu>
+                
+                <p:submenu label="Equipe" style="color: black" icon="ui-icon-person">
+                    <p:menuitem value="Cadastrar" outcome="CadastrarEquipe" icon="ui-icon-person"/>
+                    <p:menuitem  value="Lista" outcome="ApresentaEquipe" icon="ui-icon-document"/>
+                </p:submenu>
 
-              
             </p:menubar>
+           
 
-          
         </h:form>
+        <script>
+
+            }
+        </script>
+
 
 
     </h:body>

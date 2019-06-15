@@ -1,9 +1,6 @@
 package br.upe.Repositorio;
 
 
-
-
-
 import br.upe.DAO.DaoManagerHiber;
 import br.upe.Interface.Interface;
 import br.upe.Negocio.Usuario;
@@ -38,5 +35,15 @@ public class RepositorioUsuario implements Interface<Usuario, String>{
     @Override
     public List<Usuario> recuperarTodos() {
         return DaoManagerHiber.recover("from Usuario");
+    }
+    
+    
+    public Usuario recuperarPorLogin(String login, String senha){
+        List<Usuario> list = DaoManagerHiber.recover("From Usuario where login= '"+ login +"' and senha= '"+ senha+"'");
+        if(list.isEmpty()){
+            return  null;
+        }else{
+            return (Usuario) list.get(0);
+        }
     }
 }

@@ -7,7 +7,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
-        <title>Tabela de Usuarios</title>
+        <title>Tabela de Equipes</title>
         <style>
             @import "css/estiloGeral.css";
         </style>
@@ -20,61 +20,57 @@
 
                 <p:growl id="gro" showSummary="true" showDetail="true" life="3000" sticky="false" />
 
-                <p:dataTable id="tabelaUsuario" value="#{ControladorUsuario.recuperarTodosUsuarios()}" var="item"
+                <p:dataTable id="tabelaEquipe" value="#{ControladorEquipe.recuperarTodosEquipes()}" var="item"
                              paginator="true" rows="10" rowKey="#{item.nome}" 
                              emptyMessage="Não ha registros." >
 
                     <f:facet name="header">
-                        Tabela de Usuarios
+                        Tabela de Equipes
                     </f:facet>
 
                     <p:column headerText="Nome" filterBy="#{item.nome}">
                         <h:outputText value="#{item.nome}" />
                     </p:column> 
 
-                    <p:column headerText="Perfil" filterBy="#{item.perfil}">
-                        <h:outputText value="#{item.perfil}" />
-                    </p:column> 
-
-
-                    <p:column style="width: 100px;" headerText="Ações" exportable="false"  >
+                 
+                    <p:column style="width: 130px;" headerText="Ações" exportable="false"  >
 
                         <p:commandButton  oncomplete="PF('dialDeletar_C').show()" icon="ui-icon-search"
-                                          title="Detalhes" style="font-size: small;" update="tabelaUsuario" >
-                            <f:setPropertyActionListener value="#{item}" target="#{ControladorUsuario.selectUsuario}"/>             
+                                          title="Detalhes" style="font-size: small;" update="tabelaEquipe" >
+                            <f:setPropertyActionListener value="#{item}" target="#{ControladorEquipe.selectEquipe}"/>             
+                        </p:commandButton>
+                        
+                          <p:commandButton oncomplete="location.href = 'CadastrarEquipeComUsuarios.xhtml'" icon="ui-icon-plus"
+                                         title="Adicionar membros" style="font-size: small;">
+                            <f:setPropertyActionListener value="#{item}" target="#{ControladorEquipe.selectEquipe}"/>
+                          
                         </p:commandButton>
 
-                        <p:commandButton oncomplete="location.href = 'AlterarUsuario.xhtml'" icon="ui-icon-pencil"
-                                         title="Alterar Usuario" style="font-size: small;">
-                            <f:setPropertyActionListener value="#{item}" target="#{ControladorUsuario.selectUsuario}"/>
+                        <p:commandButton oncomplete="location.href = 'AlterarEquipe.xhtml'" icon="ui-icon-pencil"
+                                         title="Alterar Equipe" style="font-size: small;">
+                            <f:setPropertyActionListener value="#{item}" target="#{ControladorEquipe.selectEquipe}"/>
                             <p:confirm header="Confimation" message="Deseja realmente atualizar?" icon="ui-icon-alert"/>
                         </p:commandButton>
 
-                        <p:commandButton oncomplete="location.href='ApresentaUsuario.xhtml'" icon="ui-icon-trash" update="tabelaUsuario" title="Deletar" style="font-size: small"
-                                         action="#{ControladorUsuario.deletarUsuario(ControladorUsuario.selectUsuario)}">
-                            <f:setPropertyActionListener value="#{item}" target="#{ControladorUsuario.selectUsuario}"/>
+                        <p:commandButton oncomplete="location.href='ApresentaEquipe.xhtml'" icon="ui-icon-trash" update="tabelaEquipe" title="Deletar" style="font-size: small"
+                                         action="#{ControladorEquipe.deletarEquipe(ControladorEquipe.selectEquipe)}">
+                            <f:setPropertyActionListener value="#{item}" target="#{ControladorEquipe.selectEquipe}"/>
                             <p:confirm header="Confirmation" message="Deseja relamente deletar?" icon="ui-icon-alert"/>
                         </p:commandButton>
 
                         <p:dialog id="dialDeletar_C" showEffect="fade" hideEffect="explode" closable="true"
-                                  header="Detalhes do Usuario: #{ControladorUsuario.selectUsuario.nome}" draggable="false"
+                                  header="Detalhes do Equipe: #{ControladorEquipe.selectEquipe.nome}" draggable="false"
                                   resizable="false" widgetVar="dialDeletar_C" modal="true" appendTo="@(body)">
 
-                            <p:outputPanel id="tabelaUsuario" style="text-align: center;" autoUpdate="true">
-                                <p:panelGrid columns="2" rendered="#{not empty ControladorUsuario.selectUsuario}"  >
+                            <p:outputPanel id="tabelaEquipe" style="text-align: center;" autoUpdate="true">
+                                <p:panelGrid columns="2" rendered="#{not empty ControladorEquipe.selectEquipe}"  >
                                     <f:facet name="header" >
-                                        Detalhes do Usuario: #{ControladorUsuario.selectUsuario.nome}
+                                        Detalhes do Equipe: #{ControladorEquipe.selectEquipe.nome}
                                     </f:facet>
 
 
                                     <h:outputText value="Nome" style="font-weight: bold;"/>
-                                    <h:outputText value="#{ControladorUsuario.selectUsuario.nome}"/>
-
-                                    <h:outputText value="Login" style="font-weight: bold;"/>
-                                    <h:outputText value="#{ControladorUsuario.selectUsuario.login}"/>
-
-                                    <h:outputText value="Perfil" style="font-weight: bold;"/>
-                                    <h:outputText value="#{ControladorUsuario.selectUsuario.perfil}"/>
+                                    <h:outputText value="#{ControladorEquipe.selectEquipe.nome}"/>
 
 
                                 </p:panelGrid>
