@@ -27,7 +27,11 @@
                     <f:facet name="header">
                         Tabela de Artigos
                     </f:facet>
-
+                    
+                    <p:column headerText="Código Random" filterBy="#{item.idrandom}">
+                        <h:outputText value="#{item.idrandom}" />
+                    </p:column> 
+                    
                     <p:column headerText="Código" filterBy="#{item.id}">
                         <h:outputText value="#{item.id}" />
                     </p:column> 

@@ -6,6 +6,7 @@
 package br.upe.Negocio;
 
 import java.io.Serializable;
+import java.util.Random;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -16,7 +17,6 @@ import javax.persistence.Id;
 
 import javax.persistence.Table;
 
-
 @ManagedBean(name = "Formulario")
 @RequestScoped
 @Entity
@@ -25,37 +25,45 @@ public class Formulario implements Serializable {
 
     @Id
     @GeneratedValue
+    private int idrandom;
+
+    @Id
+    @GeneratedValue
     private int id;
-    
+
     @Column(name = "titulo", length = 100)
     private String titulo;
 
     @Column(name = "nomedosAutores", length = 100)
     private String nomeautores;
-            
+
     @Column(name = "jornalouEvento", length = 100)
     private String jornalouevento;
 
     @Column(name = "ano", length = 100)
     private String ano;
-    
-      @Column(name = "paginas", length = 100)
+
+    @Column(name = "paginas", length = 100)
     private String paginas;
-            
+
     @Column(name = "doi", length = 100)
     private String doi;
 
     @Column(name = "isbn", length = 100)
     private String isbn;
 
+    public Formulario() {
 
-  public Formulario(){
-      
-  }
+    }
 
     public int getId() {
         return id;
     }
+
+    public int getIdrandom() {
+        return idrandom;
+    }
+
 
     public String getTitulo() {
         return titulo;
@@ -113,9 +121,6 @@ public class Formulario implements Serializable {
         this.isbn = isbn;
     }
 
-   
-  
-
     @Override
     public int hashCode() {
         int hash = 7;
@@ -137,7 +142,5 @@ public class Formulario implements Serializable {
         }
         return true;
     }
-
-
 
 }
