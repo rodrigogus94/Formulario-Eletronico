@@ -15,7 +15,7 @@
     <h:body>
         
          <script>
-            if(#{controladorUsuario.login eq null}){
+            if(#{ControladorUsuario.login eq null}){
                 location.href = "#{request.contextPath}#{request.servletPath}/login.xhtml";
             }
         </script>
