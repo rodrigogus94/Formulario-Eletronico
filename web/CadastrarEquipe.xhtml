@@ -13,6 +13,13 @@
     </h:head>
 
     <h:body>
+        
+         <script>
+            if(#{controladorUsuario.login eq null}){
+                location.href = "#{request.contextPath}#{request.servletPath}/login.xhtml";
+            }
+        </script>
+        
         <div class="box_body">
 
             <ui:include src="Menu.xhtml" />

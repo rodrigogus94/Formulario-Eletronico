@@ -19,98 +19,124 @@
         <h:form id="form_menu"  >
 
 
+
             <c:if  test="${ControladorUsuario.login.perfil eq 'Administrador'}">
-            
-              <p:menubar style="color: black" id="menuAdmin">
 
-                <p:menuitem value="Home" outcome="index"  icon="ui-icon-home"/>
+                <p:menubar style="color: black" id="menuAdmin">
 
-                <p:submenu label="Usuario" style="color: black" icon="ui-icon-person">
-                    <p:menuitem value="Cadastrar" outcome="CadastrarUsuario" icon="ui-icon-person"/>
-                    <p:menuitem  value="Lista" outcome="ApresentaUsuario" icon="ui-icon-document" />
-                </p:submenu>
+                    <p:menuitem value="Home" outcome="index"  icon="ui-icon-home"/>
 
-                <p:submenu label="Artigo" style="color: black" icon="ui-icon-person">
-                    <p:menuitem value="Cadastrar" outcome="CadastrarFormulario" icon="ui-icon-person"/>
-                    <p:menuitem  value="Lista" outcome="ApresentaFormulario" icon="ui-icon-document"/>
-                </p:submenu>
+                    <p:submenu label="Usuario" style="color: black" icon="ui-icon-person">
+                        <p:menuitem value="Cadastrar" outcome="CadastrarUsuario" icon="ui-icon-person"/>
+                        <p:menuitem  value="Lista" outcome="ApresentaUsuario" icon="ui-icon-document" />
+                    </p:submenu>
 
-                <p:submenu label="Equipe" style="color: black" icon="ui-icon-person">
-                    <p:menuitem value="Cadastrar" outcome="CadastrarEquipe" icon="ui-icon-person"/>
-                    <p:menuitem  value="Lista" outcome="ApresentaEquipe" icon="ui-icon-document"/>
-                </p:submenu>
+                    <p:submenu label="Artigo" style="color: black" icon="ui-icon-person">
+                        <p:menuitem value="Cadastrar" outcome="CadastrarFormulario" icon="ui-icon-person"/>
+                        <p:menuitem  value="Lista" outcome="ApresentaFormulario" icon="ui-icon-document"/>
+                    </p:submenu>
 
-
-                <f:facet name="options">
-
-                    <p:outputLabel value="${ControladorUsuario.login.nome}" style="margin-right: 20px; color: aliceblue"/>
-
-                    <p:commandButton value="Sair" icon="ui-icon-power"  title="Sair">
-                        <p:confirm header="Confimation" message="Deseja realmente sair do sistema?" icon="ui-icon-alert"/>
-                    </p:commandButton>
-                </f:facet>
-            </p:menubar>
-
-            
-           </c:if>
-
- 
-          <c:if  test="${ControladorUsuario.login.perfil eq 'Lider de equipe'}">
-            
-              <p:menubar style="color: black" id="menuAdmin">
-
-                <p:menuitem value="Home" outcome="index"  icon="ui-icon-home"/>
-
-                <p:submenu label="Artigo" style="color: black" icon="ui-icon-person">
-                    <p:menuitem value="Cadastrar" outcome="CadastrarFormulario" icon="ui-icon-person"/>
-                    <p:menuitem  value="Lista" outcome="ApresentaFormulario" icon="ui-icon-document"/>
-                </p:submenu>
-
-                <p:submenu label="Equipe" style="color: black" icon="ui-icon-person">
-                    <p:menuitem value="Cadastrar" outcome="CadastrarEquipe" icon="ui-icon-person"/>
-                    <p:menuitem  value="Lista" outcome="ApresentaEquipe" icon="ui-icon-document"/>
-                </p:submenu>
+                    <p:submenu label="Equipe" style="color: black" icon="ui-icon-person">
+                        <p:menuitem value="Cadastrar" outcome="CadastrarEquipe" icon="ui-icon-person"/>
+                        <p:menuitem  value="Lista" outcome="ApresentaEquipe" icon="ui-icon-document"/>
+                    </p:submenu>
 
 
-                <f:facet name="options">
+                    <f:facet name="options">
 
-                    <p:outputLabel value="${ControladorUsuario.login.nome}" style="margin-right: 20px; color: aliceblue"/>
+                        <p:outputLabel value="${ControladorUsuario.login.nome}" style="margin-right: 20px; color: aliceblue"/>
 
-                    <p:commandButton value="Sair" icon="ui-icon-power"  title="Sair">
-                        <p:confirm header="Confimation" message="Deseja realmente sair do sistema?" icon="ui-icon-alert"/>
-                    </p:commandButton>
-                </f:facet>
-            </p:menubar>
+                        <p:commandButton  icon="ui-icon-power" action="#{ControladorUsuario.logoff()}"  title="Sair" oncomplete="login.xhtml" >
+                            <p:confirm header="Confimation" message="Deseja realmente sair do sistema?" icon="ui-icon-alert"/>
+                        </p:commandButton>
 
-            
-           </c:if>
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
+                            <div style="text-align: center; width: 100%;">
+                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form_menu"/>
+                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </div>
+                        </p:confirmDialog>
 
-
-            
-          <c:if  test="#{ControladorUsuario.login.perfil eq 'Estagiario'}">
-            
-              <p:menubar style="color: black" id="menuAdmin">
-
-                <p:menuitem value="Home" outcome="index"  icon="ui-icon-home"/>
-                
-                 <p:submenu label="Artigo" style="color: black" icon="ui-icon-person">
-                    <p:menuitem value="Cadastrar" outcome="CadastrarFormulario" icon="ui-icon-person"/>
-                    <p:menuitem  value="Lista" outcome="ApresentaFormulario" icon="ui-icon-document"/>
-                </p:submenu>
+                    </f:facet>
+                </p:menubar>
 
 
-                <f:facet name="options">
+            </c:if>
 
-                    <p:outputLabel value="#{ControladorUsuario.login.nome}" style="margin-right: 20px; color: aliceblue"/>
 
-                    <p:commandButton value="Sair" icon="ui-icon-power"  title="Sair">
-                        <p:confirm header="Confimation" message="Deseja realmente sair do sistema?" icon="ui-icon-alert"/>
-                    </p:commandButton>
-                </f:facet>
-            </p:menubar>
+            <c:if  test="${ControladorUsuario.login.perfil eq 'Lider de equipe'}">
 
-            
-           </c:if>
+                <p:menubar style="color: black" id="menuAdmin">
+
+                    <p:menuitem value="Home" outcome="index"  icon="ui-icon-home"/>
+
+                    <p:submenu label="Artigo" style="color: black" icon="ui-icon-person">
+                        <p:menuitem value="Cadastrar" outcome="CadastrarFormulario" icon="ui-icon-person"/>
+                        <p:menuitem  value="Lista" outcome="ApresentaFormulario" icon="ui-icon-document"/>
+                    </p:submenu>
+
+                    <p:submenu label="Equipe" style="color: black" icon="ui-icon-person">
+                        <p:menuitem value="Cadastrar" outcome="CadastrarEquipe" icon="ui-icon-person"/>
+                        <p:menuitem  value="Lista" outcome="ApresentaEquipe" icon="ui-icon-document"/>
+                    </p:submenu>
+
+
+                    <f:facet name="options">
+
+                        <p:outputLabel value="${ControladorUsuario.login.nome}" style="margin-right: 20px; color: aliceblue"/>
+
+                        <p:commandButton  icon="ui-icon-power" action="#{ControladorUsuario.logoff()}"  title="Sair" oncomplete="faces/login.xhtml">
+                            <p:confirm header="Confimation" message="Deseja realmente sair do sistema?" icon="ui-icon-alert"/>
+                        </p:commandButton>
+
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
+                            <div style="text-align: center; width: 100%;">
+                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form_menu"/>
+                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </div>
+                        </p:confirmDialog>
+
+                    </f:facet>
+                </p:menubar>
+
+
+            </c:if>
+
+
+
+            <c:if  test="#{ControladorUsuario.login.perfil eq 'Estagiario'}">
+
+                <p:menubar style="color: black" id="menuAdmin">
+
+                    <p:menuitem value="Home" outcome="index"  icon="ui-icon-home"/>
+
+                    <p:submenu label="Artigo" style="color: black" icon="ui-icon-person">
+                        <p:menuitem value="Cadastrar" outcome="CadastrarFormulario" icon="ui-icon-person"/>
+                        <p:menuitem  value="Lista" outcome="ApresentaFormulario" icon="ui-icon-document"/>
+                    </p:submenu>
+
+                    <f:facet name="options">
+
+                        <p:outputLabel value="${ControladorUsuario.login.nome}" style="margin-right: 20px; color: aliceblue"/>
+
+                        <p:commandButton  icon="ui-icon-power" action="#{ControladorUsuario.logoff()}"  title="Sair" oncomplete="login.xhtml" >
+                            <p:confirm header="Confimation" message="Deseja realmente sair do sistema?" icon="ui-icon-alert"/>
+                        </p:commandButton>
+
+                        <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
+                            <div style="text-align: center; width: 100%;">
+                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form_menu"/>
+                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                            </div>
+                        </p:confirmDialog>
+
+                    </f:facet>
+
+
+                </p:menubar>
+
+
+            </c:if>
 
 
 

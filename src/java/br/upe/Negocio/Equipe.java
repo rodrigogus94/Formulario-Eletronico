@@ -14,7 +14,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -30,19 +29,12 @@ public class Equipe implements Serializable {
 
     @Column(name = "nome", length = 100)
     private String nome;
-    
+
    
 
-    public Equipe(int id, String nome) {
-        this.id = id;
-        this.nome = nome;
-    }
-    
     public Equipe() {
        
     }
-       
-
 
     public int getId() {
         return id;
@@ -61,27 +53,7 @@ public class Equipe implements Serializable {
     }
 
    
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + this.id;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Equipe other = (Equipe) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        return true;
-    }
+  
+    
 
 }

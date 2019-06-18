@@ -6,6 +6,7 @@
 package br.upe.Controlador;
 
 import br.upe.Negocio.Equipe;
+import br.upe.Negocio.Usuario;
 import br.upe.Repositorio.RepositorioEquipe;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -13,15 +14,16 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-@ManagedBean (name = "ControladorEquipe")
+@ManagedBean(name = "ControladorEquipe")
 @SessionScoped
 public class ControladorEquipe {
-    
+
     private RepositorioEquipe re = null;
     private Equipe SelectEquipe = null;
 
     public ControladorEquipe() {
-     this.re = new RepositorioEquipe();
+        this.re = new RepositorioEquipe();
+        
     }
 
     public Equipe getSelectEquipe() {
@@ -31,16 +33,15 @@ public class ControladorEquipe {
     public void setSelectEquipe(Equipe SelectEquipe) {
         this.SelectEquipe = SelectEquipe;
     }
-    
-     
+
     public String inserirEquipe(Equipe e) {
-               
+
         this.re.inserir(e);
         return "ApresentaEquipe.xhtml";
     }
     
-    public String addUsuario(Equipe e){
-        
+      public String addUsuarioEquipe(Equipe e){
+        this.re.inserir(e);
          
          ((ControladorUsuario)((HttpSession)FacesContext.getCurrentInstance().
                  getExternalContext().getSession(true)).getAttribute("ControladorUsuario")).
@@ -52,8 +53,8 @@ public class ControladorEquipe {
                  getExternalContext().getSession(true)).getAttribute("ControladorUsuario")).
                  getSelectUsuario());
          
-        this.re.inserir(e);
-        return null;
+        
+        return "ApresentaEquipe.xhtml";
     }
 
     public String alterarEquipe(Equipe e) {
@@ -76,7 +77,7 @@ public class ControladorEquipe {
     public List<Equipe> recuperarTodosEquipes() {
         return this.re.recuperarTodos();
     }
-    
-    
-    
+
+   
+
 }

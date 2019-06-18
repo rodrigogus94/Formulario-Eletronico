@@ -15,6 +15,13 @@
 
 
     <body>
+        
+          <script>
+            if(#{ControladorUsuario.login eq null}){
+                location.href = "#{request.contextPath}#{request.servletPath}/login.xhtml";
+            }
+        </script>
+        
         <ui:include src="Menu.xhtml" />
         <div class="box_body">
             
@@ -26,7 +33,7 @@
                         <h:panelGrid columns="1">
                             
                             <p:dataTable id="checkboxUsuarios" paginator="true" rows="10" var="Usuario" value="#{ControladorUsuario.recuperarTodosUsuarios()}" 
-                                         selection="#{ControladorUsuario.selectUsuario.equipes}" rowKey="#{Equipe.id}" 
+                                         selection="#{ControladorUsuario.selectUsuario.equipes}" rowKey="#{Usuario.id}" 
                                          style="width: 100%;margin-bottom:0" emptyMessage="Náo há Usuario cadastrados.">
                                 <p:column selectionMode="multiple" style="width:2%;text-align:center"/>
                                 <p:column headerText="Usuarios" width="100%">
@@ -43,7 +50,7 @@
                         <p:separator/>
                         <div style="width: 100%;  text-align: right; margin-top:20px;">
                             
-                            <p:commandButton type="submit" value="Vincular Equipe" icon="ui-icon-disk" action="#{ControladorEquipe.addUsuario(Equipe)}">
+                            <p:commandButton type="submit" value="Vincular Equipe" icon="ui-icon-disk" action="#{ControladorEquipe.addUsuarioEquipe(Equipe)}">
                             <p:confirm header="Confirme" message="Confirmar" icon="ui-icon-alert" />
                         </p:commandButton>
 

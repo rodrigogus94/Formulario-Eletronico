@@ -5,6 +5,8 @@
  */
 package br.upe.DAO;
 
+import br.upe.Negocio.Usuario;
+import br.upe.Repositorio.RepositorioUsuario;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
@@ -129,6 +131,15 @@ public class DaoManagerHiber {
     public static void main(String args[]) {
         SchemaExport se = new SchemaExport(new AnnotationConfiguration().configure());
         se.create(true, true);
+        
+         
+                Usuario u = new Usuario();
+                u.setNome("Admin");
+                u.setLogin("admin");
+                u.setSenha("5a17602761cb55818c3a28cc551e3439");
+                u.setPerfil("Administrador");
+                
+                 new RepositorioUsuario().inserir(u);
 
     }
 

@@ -18,14 +18,13 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @ManagedBean(name = "Usuario")
 @RequestScoped
 @Entity
 @Table(name = "Usuario")
 public class Usuario implements Serializable {
 
-   @Id
+    @Id
     @GeneratedValue
     private int id;
 
@@ -34,13 +33,13 @@ public class Usuario implements Serializable {
 
     @Column(name = "login", length = 100)
     private String login;
-            
+
     @Column(name = "senha", length = 100)
     private String senha;
 
     @Column(name = "perfil", length = 100)
     private String perfil;
-    
+
     @OneToMany
     private List<Equipe> equipes;
 
@@ -52,10 +51,9 @@ public class Usuario implements Serializable {
         this.perfil = perfil;
     }
 
-
-  public Usuario(){
+    public Usuario() {
       this.equipes = new ArrayList<>();
-  }
+    }
 
     public int getId() {
         return id;
@@ -104,8 +102,8 @@ public class Usuario implements Serializable {
     public void setEquipes(List<Equipe> equipes) {
         this.equipes = equipes;
     }
+
   
-    
 
     @Override
     public int hashCode() {
@@ -128,7 +126,5 @@ public class Usuario implements Serializable {
         }
         return true;
     }
-
-
 
 }

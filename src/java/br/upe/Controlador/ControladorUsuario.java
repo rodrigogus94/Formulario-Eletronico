@@ -5,15 +5,18 @@
  */
 package br.upe.Controlador;
 
+import br.upe.Negocio.Equipe;
 import br.upe.Negocio.Usuario;
 import br.upe.Repositorio.RepositorioUsuario;
+import java.io.IOException;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import org.apache.commons.codec.digest.DigestUtils;
-
+import org.primefaces.context.RequestContext;
 
 @ManagedBean(name = "ControladorUsuario")
 @SessionScoped
@@ -52,11 +55,9 @@ public class ControladorUsuario {
     public void setSenha(Usuario senha) {
         this.senha = senha;
     }
-    
-    
-    
+
     public String inserirUsuario(Usuario u) {
-        
+
         u.setSenha(DigestUtils.md5Hex(DigestUtils.md2Hex(u.getSenha())));
         this.ru.inserir(u);
         return "ApresentaUsuario.xhtml";
@@ -65,7 +66,6 @@ public class ControladorUsuario {
     public String alterarUsuario(Usuario u) {
 
         this.ru.alterar(u);
-        System.out.println("To antes do retrun");
         return "ApresentaUsuario.xhtml";
 
     }
@@ -83,17 +83,27 @@ public class ControladorUsuario {
         return this.ru.recuperarTodos();
     }
 
+    public List<Equipe> recuperarTodasEquipes() {
+        return this.getSelectUsuario().getEquipes();
+    }
+
     public String validarLogin(String login, String senha) {
         String senhaCriptografada = DigestUtils.md5Hex(DigestUtils.md2Hex(senha));
         this.login = this.ru.recuperarPorLogin(login, senhaCriptografada);
 
-        if(this.login != null){
+        if (this.login != null) {
             this.SelectUsuario = this.login;
-            return "index.xhtml";
+            return "/faces/index.xhtml";
         }
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro", "Login ou senha invalida"));
         return null;
     }
 
-   
+    public String logoff() {
+
+        this.login = null;
+        return "/faces/login.xhtml";
+
+    }
+
 }

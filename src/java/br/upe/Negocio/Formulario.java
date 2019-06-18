@@ -23,13 +23,13 @@ import javax.persistence.Table;
 @Table(name = "Formulario")
 public class Formulario implements Serializable {
 
-    @Id
-    @GeneratedValue
-    private int idrandom;
+   
 
     @Id
     @GeneratedValue
     private int id;
+    
+    private int idRandom;
 
     @Column(name = "titulo", length = 100)
     private String titulo;
@@ -60,10 +60,16 @@ public class Formulario implements Serializable {
         return id;
     }
 
-    public int getIdrandom() {
-        return idrandom;
+    public int getIdRandom() {
+        return idRandom;
     }
 
+    public void setIdRandom() {
+        this.idRandom = id;
+       
+    }
+
+     
 
     public String getTitulo() {
         return titulo;

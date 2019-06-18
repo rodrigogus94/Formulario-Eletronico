@@ -13,6 +13,13 @@
         </style>
     </h:head>
     <h:body>
+        
+         <script>
+            if(#{ControladorUsuario.login eq null}){
+                location.href = "#{request.contextPath}#{request.servletPath}/login.xhtml";
+            }
+        </script>
+        
         <div class="box_body">
             <ui:include src="Menu.xhtml" /> 
 
@@ -28,8 +35,8 @@
                         Tabela de Artigos
                     </f:facet>
                     
-                    <p:column headerText="Código Random" filterBy="#{item.idrandom}">
-                        <h:outputText value="#{item.idrandom}" />
+                    <p:column headerText="Código Random" filterBy="#{item.idRandom}">
+                        <h:outputText value="#{item.idRandom}" />
                     </p:column> 
                     
                     <p:column headerText="Código" filterBy="#{item.id}">
