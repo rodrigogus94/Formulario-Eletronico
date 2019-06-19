@@ -39,9 +39,10 @@ public class Usuario implements Serializable {
 
     @Column(name = "perfil", length = 100)
     private String perfil;
-
-    @OneToMany
+    
+     @OneToMany
     private List<Equipe> equipes;
+
 
     public Usuario(int id, String nome, String login, String senha, String perfil) {
         this.id = id;
@@ -52,7 +53,7 @@ public class Usuario implements Serializable {
     }
 
     public Usuario() {
-      this.equipes = new ArrayList<>();
+         this.equipes = new ArrayList<>();
     }
 
     public int getId() {
@@ -102,8 +103,10 @@ public class Usuario implements Serializable {
     public void setEquipes(List<Equipe> equipes) {
         this.equipes = equipes;
     }
+    
+    
 
-  
+
 
     @Override
     public int hashCode() {

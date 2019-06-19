@@ -37,26 +37,23 @@ public class ControladorEquipe {
     public String inserirEquipe(Equipe e) {
 
         this.re.inserir(e);
-        return "ApresentaEquipe.xhtml";
-    }
-    
-      public String addUsuarioEquipe(Equipe e){
-        this.re.inserir(e);
-         
-         ((ControladorUsuario)((HttpSession)FacesContext.getCurrentInstance().
-                 getExternalContext().getSession(true)).getAttribute("ControladorUsuario")).
-                 getSelectUsuario().getEquipes().add(e);
-         
-         ((ControladorUsuario)((HttpSession)FacesContext.getCurrentInstance().
-                 getExternalContext().getSession(true)).getAttribute("ControladorUsuario")).
-                 alterarUsuario(((ControladorUsuario)((HttpSession)FacesContext.getCurrentInstance().
-                 getExternalContext().getSession(true)).getAttribute("ControladorUsuario")).
-                 getSelectUsuario());
-         
+        
+        ((ControladorUsuario)((HttpSession)FacesContext.getCurrentInstance().
+                    getExternalContext().getSession(true)).getAttribute("ControladorUsuario")).
+                    getSelectUsuario().getEquipes().add(e);
+
+            ((ControladorUsuario)((HttpSession)FacesContext.getCurrentInstance().
+                    getExternalContext().getSession(true)).getAttribute("ControladorUsuario")).
+                    alterarUsuario(((ControladorUsuario) ((HttpSession) FacesContext.getCurrentInstance().
+                            getExternalContext().getSession(true)).getAttribute("ControladorUsuario")).
+                            getSelectUsuario());
+        
+        
         
         return "ApresentaEquipe.xhtml";
     }
-
+    
+   
     public String alterarEquipe(Equipe e) {
 
         this.re.alterar(e);
@@ -77,7 +74,9 @@ public class ControladorEquipe {
     public List<Equipe> recuperarTodosEquipes() {
         return this.re.recuperarTodos();
     }
-
-   
+    
+    public List<Usuario> recuperarTodosUsuarios() {
+        return this.getSelectEquipe().getUsuarios();
+    }   
 
 }

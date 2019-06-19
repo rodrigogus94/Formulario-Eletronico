@@ -62,6 +62,8 @@ public class ControladorUsuario {
         this.ru.inserir(u);
         return "ApresentaUsuario.xhtml";
     }
+    
+    
 
     public String alterarUsuario(Usuario u) {
 
@@ -82,10 +84,8 @@ public class ControladorUsuario {
     public List<Usuario> recuperarTodosUsuarios() {
         return this.ru.recuperarTodos();
     }
+    
 
-    public List<Equipe> recuperarTodasEquipes() {
-        return this.getSelectUsuario().getEquipes();
-    }
 
     public String validarLogin(String login, String senha) {
         String senhaCriptografada = DigestUtils.md5Hex(DigestUtils.md2Hex(senha));

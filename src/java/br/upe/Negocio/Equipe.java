@@ -29,11 +29,14 @@ public class Equipe implements Serializable {
 
     @Column(name = "nome", length = 100)
     private String nome;
+    
+    @OneToMany
+    private List<Usuario> usuarios;
 
    
 
     public Equipe() {
-       
+       this.usuarios = new ArrayList<>();
     }
 
     public int getId() {
@@ -52,7 +55,36 @@ public class Equipe implements Serializable {
         this.nome = nome;
     }
 
-   
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 59 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Equipe other = (Equipe) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
   
     
 

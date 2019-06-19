@@ -32,9 +32,28 @@
                         <h:outputText value="Nome"/>
                         <p:inputText id="nome" value="#{Equipe.nome}" required="true"
                                      requiredMessage="O campo nome é obrigatório" label="nome"/>
+                                              
                        
 
                     </p:panelGrid>
+                    
+                     <h:panelGrid columns="1">
+                            
+                            <p:dataTable id="checkboxUsuarios" paginator="true" rows="10" var="Usuario" value="#{ControladorUsuario.recuperarTodosUsuarios()}" 
+                                         selection="#{ControladorEquipe.selectEquipe.usuarios}" rowKey="#{Usuario.id}" 
+                                         style="width: 100%;margin-bottom:0" emptyMessage="Náo há Usuario cadastrados.">
+                                <p:column selectionMode="multiple" style="width:2%;text-align:center"/>
+                                
+                                <p:column headerText="Usuarios" width="100%">
+                                    <h:outputText value="#{Usuario.nome}" />
+                                </p:column>
+                                
+                                 <p:column headerText="Perfil" width="100%">
+                                     <h:outputText value="#{Usuario.perfil}" />
+                                </p:column>
+                            </p:dataTable>
+
+                        </h:panelGrid>
 
                     <p:commandButton type="submit" value="Cadastrar" icon="ui-icon-disk" action="#{ControladorEquipe.inserirEquipe(Equipe)}">
                         <p:confirm header="Confirme" message="Confirmar" icon="ui-icon-alert" />
