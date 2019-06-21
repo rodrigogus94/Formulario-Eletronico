@@ -30,6 +30,7 @@ public class Formulario implements Serializable {
     private int id;
     
     private int idRandom;
+    private int cont=0;
 
     @Column(name = "titulo", length = 100)
     private String titulo;
@@ -51,25 +52,26 @@ public class Formulario implements Serializable {
 
     @Column(name = "isbn", length = 100)
     private String isbn;
+    
+    Random gerador = new Random();
 
     public Formulario() {
 
     }
 
     public int getId() {
+        random(cont);
         return id;
     }
 
     public int getIdRandom() {
-        return idRandom;
+        return idRandom ;
     }
-
-    public void setIdRandom() {
-        this.idRandom = id;
-       
+    
+     public void setIdRandom(int idRandom) {
+        this.idRandom = idRandom;
     }
-
-     
+ 
 
     public String getTitulo() {
         return titulo;
@@ -147,6 +149,16 @@ public class Formulario implements Serializable {
             return false;
         }
         return true;
+    }
+    
+    public void random(int id){
+        
+         for (int i = 0; i < 10; i++) {
+          this.idRandom += gerador.nextInt(5);
+        }
+      
+        System.out.println("to aqui " + idRandom );
+        System.out.println("cont " +this.cont );
     }
 
 }

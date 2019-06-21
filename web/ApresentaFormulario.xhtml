@@ -160,16 +160,16 @@
                                 <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}"/>             
                             </p:commandButton>
 
-                            <p:commandButton  icon="ui-icon-pencil"
+                            <p:commandButton  icon="ui-icon-pencil" action="#{messagesView.messagesAlterar()}" 
                                               title="Alterar Formulario" style="font-size: small;">
                                 <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}"/>
-                                <p:confirm header="Confimation" message="Você não tem permissão para fazer esta ação!" icon="ui-icon-alert"/>
                             </p:commandButton>
+                            
+                           
 
-                            <p:commandButton  icon="ui-icon-trash" update="tabelaFormulario" title="Deletar" style="font-size: small"
-                                              >
+                            <p:commandButton  icon="ui-icon-trash" update="tabelaFormulario" title="Deletar" style="font-size: small" action="#{messagesView.messagesAlterar()}"  >
                                 <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}"/>
-                                <p:confirm header="Confirmation" message="Você não tem permissão para fazer esta ação!" icon="ui-icon-alert"/>
+                               
                             </p:commandButton>
 
                             <p:dialog id="dialDeletar_C" showEffect="fade" hideEffect="explode" closable="true"
@@ -212,12 +212,10 @@
 
                     </p:dataTable>
 
-                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
-                        <div style="text-align: center; width: 100%; padding-left: 4px;">
-
-                            <p:commandButton value="OK" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-check"/> 
-                        </div>
-                    </p:confirmDialog>
+                    
+                    <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                    </p:messages>
 
                     <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
                         <div style="text-align: center; width: 100%; padding-left: 4px;">
@@ -231,7 +229,7 @@
                 </c:if>
 
                 <c:if  test="${ControladorUsuario.login.perfil eq 'Estagiario'}">
-                    <p:growl id="gro" showSummary="true" showDetail="true" life="3000" sticky="false"/>
+                    <p:growl id="gro" showSummary="true" showDetail="true" life="3000" sticky="true"/>
 
                     <p:dataTable id="tabelaFormulario" value="#{ControladorFormulario.recuperarTodosFormularios()}" var="item"
                                  paginator="true" rows="10" rowKey="#{item.titulo}" 
@@ -265,16 +263,15 @@
                                 <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}"/>             
                             </p:commandButton>
 
-                            <p:commandButton  icon="ui-icon-pencil" id="a"
-                                              title="Alterar Formulario" style="font-size: small;" >
+                            <p:commandButton icon="ui-icon-pencil" action="#{messagesView.messagesAlterar()}"  
+                                             title="Alterar Formulario" style="font-size: small;" >
                                 <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}" />
-                                <p:confirm id="a" header="Confimation" message="Você não tem permissão para fazer esta ação!" icon="ui-icon-alert"/>
                             </p:commandButton> 
 
-                            <p:commandButton  icon="ui-icon-trash" update="tabelaFormulario" title="Deletar" style="font-size: small"
-                                              >
+
+                            <p:commandButton  icon="ui-icon-trash" update="tabelaFormulario" title="Deletar" style="font-size: small" action="#{messagesView.messagesAlterar()}"  >
                                 <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}"/>
-                                <p:confirm header="Confirmation" message="Você não tem permissão para fazer esta ação!" icon="ui-icon-alert"/>
+                                
                             </p:commandButton>
 
                             <p:dialog id="dialDeletar_C" showEffect="fade" hideEffect="explode" closable="true"
@@ -316,34 +313,29 @@
                         </p:column>
 
                     </p:dataTable>
-                  
 
-                    <p:confirmDialog id="msg" global="true"  showEffect="fade" hideEffect="explode" closable="false">
+
+                    <p:messages id="messages" showDetail="true" closable="true">
+                        <p:autoUpdate />
+                    </p:messages>
+
+
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
                         <div style="text-align: center; width: 100%; padding-left: 4px;">
 
-                            
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
+                            </p:commandButton>
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 
                         </div>
                     </p:confirmDialog>
 
-                  
-                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
-                            <div style="text-align: center; width: 100%; padding-left: 4px;">
-                                <c:if test="id eq 'a'">
-                                    <p:commandButton value="OK" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-check"/> 
-                                </c:if>
-                                <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check">
-                                </p:commandButton>
-                                <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close"/> 
-                            </div>
-                        </p:confirmDialog>
 
-                    
 
 
 
                 </c:if>
-                
-                                
+
+
             </h:form>
         </div>
     </h:body>

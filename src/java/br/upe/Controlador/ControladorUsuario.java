@@ -95,7 +95,7 @@ public class ControladorUsuario {
             this.SelectUsuario = this.login;
             return "/index?faces-reddirect=true";
         }
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Erro", "Login ou senha invalida"));
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "Login ou senha invalida"));
         return null;
     }
 
@@ -105,5 +105,7 @@ public class ControladorUsuario {
         return "/faces/login.xhtml";
 
     }
+    
+   
 
 }

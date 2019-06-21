@@ -38,7 +38,6 @@ public class ControladorFormulario {
     }
 
     public String inserirFormulario(Formulario f){
-        
         this.rf.inserir(f);
          
          return "ApresentaFormulario.xhtml";
@@ -64,16 +63,5 @@ public class ControladorFormulario {
         return this.rf.recuperarTodos();
     }
    
-       
-
-  /*  public void logoff(){
-        this.logoff = null;
-        try{
-            FacesContext.getCurrentInstance().getExternalContext().redirect("../faces/login.xhtml");
-        }catch (IOException ex){
-            RequestContext.getCurrentInstance().showMessageInDialog
-        (new FacesMessage(FacesMessage.SEVERITY_INFO, "Formulario", ex.getMessage()));
-        }
-    }*/
   
 }
