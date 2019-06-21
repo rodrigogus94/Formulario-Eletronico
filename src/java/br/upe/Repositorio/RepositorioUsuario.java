@@ -1,6 +1,7 @@
 package br.upe.Repositorio;
 
 
+import br.upe.Controlador.ControladorUsuario;
 import br.upe.DAO.DaoManagerHiber;
 import br.upe.Interface.Interface;
 import br.upe.Negocio.Usuario;
@@ -46,4 +47,6 @@ public class RepositorioUsuario implements Interface<Usuario, String>{
             return (Usuario) list.get(0);
         }
     }
+    
+     
 }
