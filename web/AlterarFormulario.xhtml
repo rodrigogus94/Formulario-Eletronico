@@ -12,8 +12,8 @@
         </style>
     </h:head>
     <h:body>
-         <script>
-            if(#{ControladorUsuario.login eq null}){
+        <script>
+            if (#{ControladorUsuario.login eq null}) {
                 location.href = "#{request.contextPath}#{request.servletPath}/login.xhtml";
             }
         </script>
@@ -27,34 +27,34 @@
                     <p:growl autoUpdate="true" rendered="true" id="gro" life="4000" showSummary="true" showDetail="true"/>            
                     <p:panelGrid columns="2" id="tabela">
 
-                        <h:outputText value="Titulo"/>
+                        <p:outputLabel value="Titulo" for="titulo"/>
                         <p:inputText id="titulo" value="#{ControladorFormulario.selectFormulario.titulo}" required="true"
                                      requiredMessage="O campo Titulo é obrigatório" label="titulo"/>
 
-                        <h:outputText value="Nome dos Autores"/>
+                        <p:outputLabel value="Nome dos Autores" for="nomeautores"/>
                         <p:inputText id="nomeautores" value="#{ControladorFormulario.selectFormulario.nomeautores}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="nomeautores"/>
 
-                        <p:outputLabel value="Jornal ou Evento" for="Jornal_Evento"/>
-                        <p:selectOneMenu id="Jornal_Evento" value="#{ControladorFormulario.selectFormulario.jornalouevento}" effect="fold" editable="true" rendered="true" required="true"
+                        <p:outputLabel value="Journal ou Evento" for="Journal_Evento"/>
+                        <p:selectOneMenu id="Journal_Evento" value="#{ControladorFormulario.selectFormulario.jornalouevento}" effect="fold" editable="true" rendered="true" required="true"
                                          requiredMessage="Faltou selecionar!">
                             <f:selectItem itemLabel="Jornal" itemValue="Jornal"/>
                             <f:selectItem itemLabel="Evento" itemValue="Evento"/>
                         </p:selectOneMenu>
 
-                        <h:outputText value="Ano"/>
+                        <p:outputLabel value="Ano" for="ano"/>
                         <p:inputText id="ano" value="#{ControladorFormulario.selectFormulario.ano}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="ano"/>
 
-                        <h:outputText value="Paginas"/>
+                        <p:outputLabel value="Paginas" for="paginas"/>
                         <p:inputText id="paginas" value="#{ControladorFormulario.selectFormulario.paginas}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="paginas"/>
 
-                        <h:outputText value="DOI"/>
+                        <p:outputLabel value="DOI" for="doi"/>
                         <p:inputText id="doi" value="#{ControladorFormulario.selectFormulario.doi}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="doi"/>
 
-                        <h:outputText value="ISBN"/>
+                        <p:outputLabel value="ISBN" for="isbn"/>
                         <p:inputText id="isbn" value="#{ControladorFormulario.selectFormulario.isbn}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="isbn"/>
 

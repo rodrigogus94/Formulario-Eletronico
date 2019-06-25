@@ -30,41 +30,48 @@
                     <p:growl autoUpdate="true" />
                     <p:panelGrid columns="2" id="tabela">
 
-                        <h:outputText value="Titulo"/>
+                        <p:outputLabel value="Titulo" for="titulo"/>
                         <p:inputText id="titulo" value="#{Formulario.titulo}" required="true"
                                      requiredMessage="O campo Titulo é obrigatório" label="titulo"/>
 
-                        <h:outputText value="Nome dos Autores"/>
+                        <p:outputLabel value="Nome dos Autores" for="nomeautores"/>
                         <p:inputText id="nomeautores" value="#{Formulario.nomeautores}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="nomeautores"/>
 
-                        <p:outputLabel value="Jornal ou Evento" for="Jornal_Evento"/>
-                        <p:selectOneMenu id="Jornal_Evento" value="#{Formulario.jornalouevento}" effect="fold" editable="true" rendered="true" required="true"
-                                         requiredMessage="Faltou selecionar!">
+                        <p:outputLabel value="Journal ou Evento" for="Journal_Evento"/>
+                        <p:selectOneMenu id="Journal_Evento" value="#{Formulario.jornalouevento}" effect="fold" editable="false" rendered="true" required="true"
+                                         requiredMessage="Faltou selecionar!" style="width: 205px">
                             <f:selectItem itemLabel="Jornal" itemValue="Jornal"/>
                             <f:selectItem itemLabel="Evento" itemValue="Evento"/>
                         </p:selectOneMenu>
 
-                        <h:outputText value="Ano"/>
+                        <p:outputLabel value="Ano" for="ano"/>
                         <p:inputText id="ano" value="#{Formulario.ano}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="ano"/>
 
-                        <h:outputText value="Paginas"/>
+                        <p:outputLabel value="Paginas" for="paginas"/>
                         <p:inputText id="paginas" value="#{Formulario.paginas}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="paginas"/>
 
-                        <h:outputText value="DOI"/>
+                        <p:outputLabel value="DOI" for="doi"/>
                         <p:inputText id="doi" value="#{Formulario.doi}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="doi"/>
 
-                        <h:outputText value="ISBN"/>
+                        <p:outputLabel value="ISBN" for="isbn"/>
                         <p:inputText id="isbn" value="#{Formulario.isbn}" required="true"
                                      requiredMessage="Este campo é obrigatório" label="isbn"/>
 
-                        <h:outputText value="Random: " />
                         
-                        <p:inputText id="random" value="#{Formulario.idRandom}"  />
+                         <p:outputLabel value="Cadastrado por" for="cadastrado"/>
+                        <p:inputText id="cadastrado" value="#{Formulario.cadastrado} "   required="true"
+                                     requiredMessage="Este campo é obrigatório" label="cadastrado"/>
+                        
                         <p:commandButton value="Random" action="#{Formulario.random(id)}" update="random" />
+                        <p:inputText id="random" value="#{Formulario.idRandom}"  />
+
+
+                       
+
 
                     </p:panelGrid>
 

@@ -53,6 +53,9 @@ public class Formulario implements Serializable {
     @Column(name = "isbn", length = 100)
     private String isbn;
     
+     @Column(name = "cadastrado", length = 100)
+    private String cadastrado;
+    
     Random gerador = new Random();
 
     public Formulario() {
@@ -128,6 +131,16 @@ public class Formulario implements Serializable {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+    public String getCadastrado() {
+        return cadastrado;
+    }
+
+    public void setCadastrado(String cadastrado) {
+        this.cadastrado = cadastrado;
+    }
+    
+     
 
     @Override
     public int hashCode() {

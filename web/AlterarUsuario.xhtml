@@ -28,17 +28,17 @@
                     <p:growl autoUpdate="true" rendered="true" id="gro" life="4000" showSummary="true" showDetail="true"/>
                     <p:panelGrid columns="2" id="tabela">
 
-                        <h:outputText value="Nome"/>
+                        <p:outputLabel value="Nome" for="nome"/>
                         <p:inputText id="nome" value="#{ControladorUsuario.selectUsuario.nome}" required="true"
                                      requiredMessage="O campo nome é obrigatório" label="nome"/>
 
-                        <h:outputText value="Login"/>
+                        <p:outputLabel value="Email" for="login"/>
                         <p:inputText id="login" value="#{ControladorUsuario.selectUsuario.login}" required="true"
                                      requiredMessage="O campo login é obrigatório" label="login"/>
 
                         <p:outputLabel value="Perfil" for="Perfil_Usuario"/>
-                        <p:selectOneMenu id="Perfil_Usuario" value="#{ControladorUsuario.selectUsuario.perfil}" effect="fold" editable="true" rendered="true" required="true"
-                                         requiredMessage="Faltou o Perfil!">
+                        <p:selectOneMenu id="Perfil_Usuario" value="#{ControladorUsuario.selectUsuario.perfil}" effect="fold" editable="false" rendered="true" required="true"
+                                         requiredMessage="Faltou o Perfil!" style="width: 205px">
                             <f:selectItem itemLabel="Administrador" itemValue="Administrado"/>
                             <f:selectItem itemLabel="Lider de equipe" itemValue="Lider de equipe"/>
                             <f:selectItem itemLabel="Estagiario" itemValue="Estagiario"/>

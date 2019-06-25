@@ -83,6 +83,11 @@
                                             Detalhes do Artigo: #{ControladorFormulario.selectFormulario.titulo}
                                         </f:facet>
 
+                                        <h:outputText value="Código" style="font-weight: bold;"/>
+                                        <h:outputText value="#{ControladorFormulario.selectFormulario.id}"/>
+
+                                        <h:outputText value="Código Random" style="font-weight: bold;"/>
+                                        <h:outputText value="#{ControladorFormulario.selectFormulario.idRandom}"/>
 
                                         <h:outputText value="Titulo" style="font-weight: bold;"/>
                                         <h:outputText value="#{ControladorFormulario.selectFormulario.titulo}"/>
@@ -104,6 +109,9 @@
 
                                         <h:outputText value="ISBN" style="font-weight: bold;"/>
                                         <h:outputText value="#{ControladorFormulario.selectFormulario.isbn}"/>
+
+                                        <h:outputText value="Cadastrador por :"/>
+                                        <h:outputText value="#{ControladorUsuario.selectUsuario.nome}"/>
 
                                     </p:panelGrid>
                                 </p:outputPanel>
@@ -164,12 +172,12 @@
                                               title="Alterar Formulario" style="font-size: small;">
                                 <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}"/>
                             </p:commandButton>
-                            
-                           
+
+
 
                             <p:commandButton  icon="ui-icon-trash" update="tabelaFormulario" title="Deletar" style="font-size: small" action="#{messagesView.messagesAlterar()}"  >
                                 <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}"/>
-                               
+
                             </p:commandButton>
 
                             <p:dialog id="dialDeletar_C" showEffect="fade" hideEffect="explode" closable="true"
@@ -182,6 +190,11 @@
                                             Detalhes do Artigo: #{ControladorFormulario.selectFormulario.titulo}
                                         </f:facet>
 
+                                        <h:outputText value="Código" style="font-weight: bold;"/>
+                                        <h:outputText value="#{ControladorFormulario.selectFormulario.id}"/>
+
+                                        <h:outputText value="Código Random" style="font-weight: bold;"/>
+                                        <h:outputText value="#{ControladorFormulario.selectFormulario.idRandom}"/>
 
                                         <h:outputText value="Titulo" style="font-weight: bold;"/>
                                         <h:outputText value="#{ControladorFormulario.selectFormulario.titulo}"/>
@@ -204,6 +217,10 @@
                                         <h:outputText value="ISBN" style="font-weight: bold;"/>
                                         <h:outputText value="#{ControladorFormulario.selectFormulario.isbn}"/>
 
+                                        <h:outputText value="Cadastrador por :"/>
+                                        <h:outputText value="#{ControladorUsuario.selectUsuario.nome}"/>
+
+
                                     </p:panelGrid>
                                 </p:outputPanel>
                             </p:dialog>
@@ -212,7 +229,7 @@
 
                     </p:dataTable>
 
-                    
+
                     <p:messages id="messages" showDetail="true" closable="true">
                         <p:autoUpdate />
                     </p:messages>
@@ -271,7 +288,7 @@
 
                             <p:commandButton  icon="ui-icon-trash" update="tabelaFormulario" title="Deletar" style="font-size: small" action="#{messagesView.messagesAlterar()}"  >
                                 <f:setPropertyActionListener value="#{item}" target="#{ControladorFormulario.selectFormulario}"/>
-                                
+
                             </p:commandButton>
 
                             <p:dialog id="dialDeletar_C" showEffect="fade" hideEffect="explode" closable="true"
@@ -284,6 +301,12 @@
                                             Detalhes do Artigo: #{ControladorFormulario.selectFormulario.titulo}
                                         </f:facet>
 
+
+                                       <h:outputText value="Código" style="font-weight: bold;"/>
+                                        <h:outputText value="#{ControladorFormulario.selectFormulario.id}"/>
+                                        
+                                        <h:outputText value="Código Random" style="font-weight: bold;"/>
+                                        <h:outputText value="#{ControladorFormulario.selectFormulario.idRandom}"/>
 
                                         <h:outputText value="Titulo" style="font-weight: bold;"/>
                                         <h:outputText value="#{ControladorFormulario.selectFormulario.titulo}"/>
@@ -305,6 +328,10 @@
 
                                         <h:outputText value="ISBN" style="font-weight: bold;"/>
                                         <h:outputText value="#{ControladorFormulario.selectFormulario.isbn}"/>
+                                        
+                                        <h:outputText value="Cadastrador por :"/>
+                                        <h:outputText value="#{ControladorFormulario.selectFormulario.cadastrado}"/>
+
 
                                     </p:panelGrid>
                                 </p:outputPanel>

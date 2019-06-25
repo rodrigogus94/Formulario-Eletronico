@@ -13,13 +13,13 @@
     </h:head>
 
     <h:body>
-        
+
         <script>
-            if(#{ControladorUsuario.login eq null}){
+            if (#{ControladorUsuario.login eq null}) {
                 location.href = "#{request.contextPath}#{request.servletPath}/login.xhtml";
             }
         </script>
-        
+
         <div class="box_body">
 
             <ui:include src="Menu.xhtml" />
@@ -29,12 +29,12 @@
                     <p:growl autoUpdate="true" />
                     <p:panelGrid columns="2" id="tabela">
 
-                        <h:outputText value="Nome"/>
+                        <p:outputLabel for="nome" value="Nome"/>
                         <p:inputText id="nome" value="#{Usuario.nome}" required="true"
                                      requiredMessage="O campo nome é obrigatório" label="nome"/>
-                        
-                        <h:outputText value="Login"/>
-                        <p:inputText id="login" value="#{Usuario.login}" required="true"
+
+                        <p:outputLabel for="login" value="Email"/>
+                        <p:inputText id="login" value="#{Usuario.login}" required="true" rendered="true"
                                      requiredMessage="O campo login é obrigatório" label="login"/>
 
                         <p:outputLabel for="Senha_Usuario" value="Senha"/>
@@ -45,8 +45,8 @@
                         </p:password>
 
                         <p:outputLabel value="Perfil" for="Perfil_Usuario"/>
-                        <p:selectOneMenu id="Perfil_Usuario" value="#{Usuario.perfil}" effect="fold" editable="true" rendered="true" required="true"
-                                         requiredMessage="Faltou o Perfil!">
+                        <p:selectOneMenu id="Perfil_Usuario" value="#{Usuario.perfil}" effect="fold" editable="false" rendered="true" required="true"
+                                         requiredMessage="Faltou o Perfil!" style="width: 205px">
                             <f:selectItem itemLabel="Administrador" itemValue="Administrador"/>
                             <f:selectItem itemLabel="Lider de equipe" itemValue="Lider de equipe"/>
                             <f:selectItem itemLabel="Estagiario" itemValue="Estagiario"/>
