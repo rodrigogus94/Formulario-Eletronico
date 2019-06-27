@@ -26,71 +26,229 @@
             <ui:include src="Menu.xhtml" />
 
             <h:form>
-                <p:panel header="Cadastro de Artigos" >
-                    <p:growl autoUpdate="true" />
-                    <p:panelGrid columns="2" id="tabela">
 
-                        <p:outputLabel value="Titulo" for="titulo"/>
-                        <p:inputText id="titulo" value="#{Formulario.titulo}" required="true"
-                                     requiredMessage="O campo Titulo é obrigatório" label="titulo"/>
+                <c:if  test="${ControladorUsuario.login.perfil eq 'Administrador'}">
 
-                        <p:outputLabel value="Nome dos Autores" for="nomeautores"/>
-                        <p:inputText id="nomeautores" value="#{Formulario.nomeautores}" required="true"
-                                     requiredMessage="Este campo é obrigatório" label="nomeautores"/>
+                    <p:panel header="Cadastro de Artigos" >
+                        <p:growl autoUpdate="true" />
+                        <p:panelGrid columns="2" id="tabela">
 
-                        <p:outputLabel value="Journal ou Evento" for="Journal_Evento"/>
-                        <p:selectOneMenu id="Journal_Evento" value="#{Formulario.jornalouevento}" effect="fold" editable="false" rendered="true" required="true"
-                                         requiredMessage="Faltou selecionar!" style="width: 205px">
-                            <f:selectItem itemLabel="Jornal" itemValue="Jornal"/>
-                            <f:selectItem itemLabel="Evento" itemValue="Evento"/>
-                        </p:selectOneMenu>
+                            <p:outputLabel value="Titulo" for="titulo"/>
+                            <p:inputText id="titulo" value="#{Formulario.titulo}" required="true"
+                                         requiredMessage="O campo Titulo é obrigatório" label="titulo"/>
 
-                        <p:outputLabel value="Ano" for="ano"/>
-                        <p:inputText id="ano" value="#{Formulario.ano}" required="true"
-                                     requiredMessage="Este campo é obrigatório" label="ano"/>
+                            <p:outputLabel value="Nome dos Autores" for="nomeautores"/>
+                            <p:inputText id="nomeautores" value="#{Formulario.nomeautores}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="nomeautores"/>
 
-                        <p:outputLabel value="Paginas" for="paginas"/>
-                        <p:inputText id="paginas" value="#{Formulario.paginas}" required="true"
-                                     requiredMessage="Este campo é obrigatório" label="paginas"/>
+                            <p:outputLabel value="Journal ou Evento" for="Journal_Evento"/>
+                            <p:selectOneMenu id="Journal_Evento" value="#{Formulario.jornalouevento}" effect="fold" editable="false" rendered="true" required="true"
+                                             requiredMessage="Faltou selecionar!" style="width: 205px">
+                                <f:selectItem itemLabel="Jornal" itemValue="Jornal"/>
+                                <f:selectItem itemLabel="Evento" itemValue="Evento"/>
+                            </p:selectOneMenu>
 
-                        <p:outputLabel value="DOI" for="doi"/>
-                        <p:inputText id="doi" value="#{Formulario.doi}" required="true"
-                                     requiredMessage="Este campo é obrigatório" label="doi"/>
+                             <p:outputLabel value="Ano" for="ano"/>
+                            <p:inputMask value="#{Formulario.ano}" required="true" requiredMessage="Este campo é obrigatório"
+                                         id="ano" size="30" mask="99/99/9999" onblur="" style="width: 240px">
+                            </p:inputMask>
 
-                        <p:outputLabel value="ISBN" for="isbn"/>
-                        <p:inputText id="isbn" value="#{Formulario.isbn}" required="true"
-                                     requiredMessage="Este campo é obrigatório" label="isbn"/>
+                            <p:outputLabel value="Paginas" for="paginas"/>
+                            <p:inputText id="paginas" value="#{Formulario.paginas}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="paginas"/>
 
-                        
-                         <p:outputLabel value="Cadastrado por" for="cadastrado"/>
-                        <p:inputText id="cadastrado" value="#{Formulario.cadastrado} "   required="true"
-                                     requiredMessage="Este campo é obrigatório" label="cadastrado"/>
-                        
-                        <p:commandButton value="Random" action="#{Formulario.random(id)}" update="random" />
-                        <p:inputText id="random" value="#{Formulario.idRandom}"  />
+                            <p:outputLabel value="DOI" for="doi"/>
+                            <p:inputText id="doi" value="#{Formulario.doi}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="doi"/>
+
+                            <p:outputLabel value="ISBN" for="isbn"/>
+                            <p:inputText id="isbn" value="#{Formulario.isbn}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="isbn"/>
 
 
-                       
+                            <p:outputLabel value="Cadastrado pro" for="cadastrado"/>
+                            <p:selectOneMenu id="cadastrado" value="#{Formulario.cadastrado}" effect="fold" editable="false" rendered="true" required="true"
+                                             requiredMessage="Faltou selecionar!" style="width: 205px">
+                                <f:selectItem itemLabel="#{ControladorUsuario.selectUsuario.nome}" itemValue="#{ControladorUsuario.selectUsuario.nome}"/>
+                            </p:selectOneMenu>
 
 
-                    </p:panelGrid>
-
-                    <p:commandButton type="submit" value="Cadastrar" icon="ui-icon-disk" action="#{ControladorFormulario.inserirFormulario(Formulario)}" >
-                        <p:confirm header="Confirme" message="Confirmar" icon="ui-icon-alert" />
-                    </p:commandButton>
-
-                    <p:commandButton value="Cancelar" icon="ui-icon-close" oncomplete="location.href='index.xhtml'">
-                        <p:confirm header="Confirme" message="Deseja Mesmo Cancelar o Cadastro" icon="ui-icon-alert" />
-                    </p:commandButton>
+                            <p:commandButton value="Random" action="#{Formulario.random(id)}" update="random" />
+                            <p:inputText id="random" value="#{Formulario.idRandom}"  />
 
 
-                </p:panel>
-                <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
-                    <div style="text-align: center; width: 100%;">
-                        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form_Cada"/>
-                        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-                    </div>
-                </p:confirmDialog>
+
+
+
+                        </p:panelGrid>
+
+                        <p:commandButton type="submit" value="Cadastrar" icon="ui-icon-disk" action="#{ControladorFormulario.inserirFormulario(Formulario)}" >
+                            <p:confirm header="Confirme" message="Confirmar" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                        <p:commandButton value="Cancelar" icon="ui-icon-close" oncomplete="location.href='index.xhtml'">
+                            <p:confirm header="Confirme" message="Deseja Mesmo Cancelar o Cadastro" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+
+                    </p:panel>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
+                        <div style="text-align: center; width: 100%;">
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form_Cada"/>
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </div>
+                    </p:confirmDialog>
+
+                </c:if>
+
+                <c:if  test="${ControladorUsuario.login.perfil eq 'Lider de equipe'}">
+
+                    <p:panel header="Cadastro de Artigos" >
+                        <p:growl autoUpdate="true" />
+                        <p:panelGrid columns="2" id="tabela">
+
+                            <p:outputLabel value="Titulo" for="titulo"/>
+                            <p:inputText id="titulo" value="#{Formulario.titulo}" required="true"
+                                         requiredMessage="O campo Titulo é obrigatório" label="titulo"/>
+
+                            <p:outputLabel value="Nome dos Autores" for="nomeautores"/>
+                            <p:inputText id="nomeautores" value="#{Formulario.nomeautores}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="nomeautores"/>
+
+                            <p:outputLabel value="Journal ou Evento" for="Journal_Evento"/>
+                            <p:selectOneMenu id="Journal_Evento" value="#{Formulario.jornalouevento}" effect="fold" editable="false" rendered="true" required="true"
+                                             requiredMessage="Faltou selecionar!" style="width: 205px">
+                                <f:selectItem itemLabel="Jornal" itemValue="Jornal"/>
+                                <f:selectItem itemLabel="Evento" itemValue="Evento"/>
+                            </p:selectOneMenu>
+
+                            <p:outputLabel value="Ano" for="ano"/>
+                            <p:inputMask value="#{Formulario.ano}" required="true" requiredMessage="Este campo é obrigatório"
+                                         id="ano"  mask="99/99/9999" onblur="" style="width: 240px">
+                            </p:inputMask>
+
+
+                            <p:outputLabel value="Paginas" for="paginas"/>
+                            <p:inputText id="paginas" value="#{Formulario.paginas}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="paginas"/>
+
+                            <p:outputLabel value="DOI" for="doi"/>
+                            <p:inputText id="doi" value="#{Formulario.doi}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="doi"/>
+
+                            <p:outputLabel value="ISBN" for="isbn"/>
+                            <p:inputText id="isbn" value="#{Formulario.isbn}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="isbn"/>
+
+
+                            <p:outputLabel value="Cadastrado pro" for="cadastrado"/>
+                            <p:selectOneMenu id="cadastrado" value="#{Formulario.cadastrado}" effect="fold" editable="false" rendered="true" required="true"
+                                             requiredMessage="Faltou selecionar!" style="width: 205px">
+                                <f:selectItem itemLabel="#{ControladorUsuario.selectUsuario.nome}" itemValue="#{ControladorUsuario.selectUsuario.nome}"/>
+                            </p:selectOneMenu>
+
+
+                            <p:commandButton value="Random" action="#{Formulario.random(id)}" update="random" />
+                            <p:inputText id="random" value="#{Formulario.idRandom}"  />
+
+
+
+
+
+                        </p:panelGrid>
+
+                        <p:commandButton type="submit" value="Cadastrar" icon="ui-icon-disk" action="#{ControladorFormulario.inserirFormulario(Formulario)}" >
+                            <p:confirm header="Confirme" message="Confirmar" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                        <p:commandButton value="Cancelar" icon="ui-icon-close" oncomplete="location.href='index.xhtml'">
+                            <p:confirm header="Confirme" message="Deseja Mesmo Cancelar o Cadastro" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+
+                    </p:panel>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
+                        <div style="text-align: center; width: 100%;">
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form_Cada"/>
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </div>
+                    </p:confirmDialog>
+
+                </c:if>
+
+                <c:if  test="${ControladorUsuario.login.perfil eq 'Estagiario'}">
+                    
+                    <p:panel header="Cadastro de Artigos" >
+                        <p:growl autoUpdate="true" />
+                        <p:panelGrid columns="2" id="tabela">
+
+                            <p:outputLabel value="Titulo" for="titulo"/>
+                            <p:inputText id="titulo" value="#{Formulario.titulo}" required="true"
+                                         requiredMessage="O campo Titulo é obrigatório" label="titulo"/>
+
+                            <p:outputLabel value="Nome dos Autores" for="nomeautores"/>
+                            <p:inputText id="nomeautores" value="#{Formulario.nomeautores}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="nomeautores"/>
+
+                            <p:outputLabel value="Journal ou Evento" for="Journal_Evento"/>
+                            <p:selectOneMenu id="Journal_Evento" value="#{Formulario.jornalouevento}" effect="fold" editable="false" rendered="true" required="true"
+                                             requiredMessage="Faltou selecionar!" style="width: 205px">
+                                <f:selectItem itemLabel="Jornal" itemValue="Jornal"/>
+                                <f:selectItem itemLabel="Evento" itemValue="Evento"/>
+                            </p:selectOneMenu>
+
+                             <p:outputLabel value="Ano" for="ano"/>
+                            <p:inputMask value="#{Formulario.ano}" required="true" requiredMessage="Este campo é obrigatório"
+                                         id="ano" size="30" mask="99/99/9999" onblur="" style="width: 240px">
+                            </p:inputMask>
+
+                            <p:outputLabel value="Paginas" for="paginas"/>
+                            <p:inputText id="paginas" value="#{Formulario.paginas}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="paginas"/>
+
+                            <p:outputLabel value="DOI" for="doi"/>
+                            <p:inputText id="doi" value="#{Formulario.doi}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="doi"/>
+
+                            <p:outputLabel value="ISBN" for="isbn"/>
+                            <p:inputText id="isbn" value="#{Formulario.isbn}" required="true"
+                                         requiredMessage="Este campo é obrigatório" label="isbn"/>
+
+
+                            <p:outputLabel value="Cadastrado pro" for="cadastrado"/>
+                            <p:selectOneMenu id="cadastrado" value="#{Formulario.cadastrado}" effect="fold" editable="false" rendered="true" required="true"
+                                             requiredMessage="Faltou selecionar!" style="width: 205px">
+                                <f:selectItem itemLabel="#{ControladorUsuario.selectUsuario.nome}" itemValue="#{ControladorUsuario.selectUsuario.nome}"/>
+                            </p:selectOneMenu>
+
+
+                            <p:commandButton value="Random" action="#{Formulario.random(id)}" update="random" />
+                            <p:inputText id="random" value="#{Formulario.idRandom}"  />
+
+
+
+
+
+                        </p:panelGrid>
+
+                        <p:commandButton type="submit" value="Cadastrar" icon="ui-icon-disk" action="#{ControladorFormulario.inserirFormulario(Formulario)}" >
+                            <p:confirm header="Confirme" message="Confirmar" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+                        <p:commandButton value="Cancelar" icon="ui-icon-close" oncomplete="location.href='index.xhtml'">
+                            <p:confirm header="Confirme" message="Deseja Mesmo Cancelar o Cadastro" icon="ui-icon-alert" />
+                        </p:commandButton>
+
+
+                    </p:panel>
+                    <p:confirmDialog global="true" showEffect="fade" hideEffect="explode" closable="false">
+                        <div style="text-align: center; width: 100%;">
+                            <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form_Cada"/>
+                            <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+                        </div>
+                    </p:confirmDialog>
+
+                </c:if>
             </h:form>
         </div>
     </h:body>

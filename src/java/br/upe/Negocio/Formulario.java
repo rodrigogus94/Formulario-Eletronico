@@ -59,7 +59,7 @@ public class Formulario implements Serializable {
     Random gerador = new Random();
 
     public Formulario() {
-
+        
     }
 
     public int getId() {
