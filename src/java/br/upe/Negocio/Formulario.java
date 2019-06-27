@@ -32,10 +32,10 @@ public class Formulario implements Serializable {
     private int idRandom;
     private int cont=0;
 
-    @Column(name = "titulo", length = 100)
+    @Column(name = "titulo", length = 1000)
     private String titulo;
 
-    @Column(name = "nomedosAutores", length = 100)
+    @Column(name = "nomedosAutores", length = 1000)
     private String nomeautores;
 
     @Column(name = "jornalouEvento", length = 100)

@@ -43,8 +43,9 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="Ano" for="ano"/>
-                        <p:inputText id="ano" value="#{ControladorFormulario.selectFormulario.ano}" required="true"
-                                     requiredMessage="Este campo é obrigatório" label="ano"/>
+                        <p:inputMask value="#{ControladorFormulario.selectFormulario.ano}" required="true" requiredMessage="Este campo é obrigatório"
+                                     id="ano" size="30" mask="99/99/9999" onblur="" style="width: 275px">
+                        </p:inputMask>
 
                         <p:outputLabel value="Paginas" for="paginas"/>
                         <p:inputText id="paginas" value="#{ControladorFormulario.selectFormulario.paginas}" required="true"
